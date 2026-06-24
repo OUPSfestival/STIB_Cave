@@ -125,7 +125,11 @@ body{
   break-inside:avoid;
   background:transparent;
   border:none;
-  cursor:pointer;
+  cursor:none;
+}
+
+.result-card:hover{
+  cursor:none;
 }
 
 .result-image{

@@ -196,7 +196,7 @@ background:transparent;
   height:auto;
   display:block;
   object-fit:contain;
-  filter:grayscale(50%);
+  filter:grayscale(0%);
 
 }
 

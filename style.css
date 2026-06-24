@@ -112,6 +112,8 @@ border-left:1px solid var(--line);
 height:90px;
 padding:20px;
 border-bottom:none;
+position:relative;
+
 }
 
 .archive-layout{
@@ -133,8 +135,8 @@ border-bottom:none;
 
 position:absolute;
 right:20px;
-top:50%;
-transform:translateY(-50%);
+top:105px;
+transform:none;
 border:none;
 background:none;
 font-family:inherit;

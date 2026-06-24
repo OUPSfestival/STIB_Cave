@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cereus",
+    "category": "Plant Symbiosis",
+    "title": "Cereus ambiguus",
+    "image": "images/cactus01.jpg",
+    "tags": "cactus plant symbiosis cereus ambiguus poison fruit",
+
+    "short": "Toxic defensive needles coexist with soft nutrient-rich fruit spines.",
+
+    "description": "Toxic defensive needles coexist with nutrient-rich fruit membranes. Researchers observed cave insects consuming the inner fruit while avoiding the outer spine lattice. During dry seasons the organism redistributes stored moisture toward neighboring roots through underground fungal channels."
+  },
+
+
+  {
+    "id": "opuntia",
+    "category": "Plant Symbiosis",
+    "title": "Opuntia dulcisferra",
+    "image": "images/cactus02.jpg",
+    "tags": "cactus roots water symbiosis opuntia",
+
+    "short": "Underground water retention systems shared between neighboring root structures.",
+
+    "description": "Opuntia dulcisferra forms subterranean root systems capable of storing filtered cave moisture for extended periods."
+  }
+]

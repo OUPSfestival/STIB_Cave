@@ -110,8 +110,8 @@ body{
 /* GRID */
 
 .archive-results-grid{
-  column-count:4;
-  column-gap:24px;
+  column-count:5;
+  column-gap:40px;
 }
 
 
@@ -121,7 +121,7 @@ body{
 .result-card{
   display:inline-block;
   width:100%;
-  margin-bottom:28px;
+  margin-bottom:60px;
   break-inside:avoid;
   background:transparent;
   border:none;

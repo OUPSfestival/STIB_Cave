@@ -4,7 +4,50 @@ const columns = [
   document.getElementById("column2"),
   document.getElementById("column3")
 ];
+const searchInput = document.getElementById("searchInput");
 
+
+searchInput.addEventListener("input", function(){
+
+  const query = this.value.toLowerCase();
+
+
+  columns.forEach(column=>{
+
+    column.innerHTML = "";
+
+  });
+
+
+  const filtered = articles.filter(article=>{
+
+    return (
+
+      article.title.toLowerCase().includes(query) ||
+
+      article.category.toLowerCase().includes(query) ||
+
+      article.excerpt.toLowerCase().includes(query) ||
+
+      article.tags.some(tag =>
+        tag.toLowerCase().includes(query)
+      )
+
+    );
+
+  });
+
+
+  filtered.forEach((article,index)=>{
+
+    columns[index % 3].appendChild(
+      createCard(article)
+    );
+
+  });
+
+
+});
 
 // 2. Shuffle function
 

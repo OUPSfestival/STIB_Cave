@@ -293,3 +293,18 @@ createCard(article)
 
 
 });
+
+
+function scrollToColumn(target){
+
+  const element = document.querySelector("." + target);
+
+  if(element){
+
+    element.scrollIntoView({
+      behavior:"smooth"
+    });
+
+  }
+
+}

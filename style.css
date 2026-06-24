@@ -95,7 +95,7 @@ color:#777;
 
 height:100vh;
 overflow:hidden;
-border-left:1px solid var(--line);
+border-right:none;
 }
 
 
@@ -137,6 +137,13 @@ height:calc(100vh - 60px);
 overflow-y:auto;
 padding:40px 20px 20px 20px;
 scrollbar-width:none;
+}
+
+.archive-column:nth-child(3) .column-content,
+.archive-column:nth-child(4) .column-content,
+.archive-column:nth-child(5) .column-content{
+   
+border-left:1px solid var(--line);
 }
 
 

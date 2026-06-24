@@ -67,10 +67,9 @@ overflow:hidden;
 body{
 
 font-family:var(--font-main);
-
 font-size:var(--text-size);
-
 color:var(--text);
+background:#ededeb;
 
 
 }
@@ -579,7 +578,26 @@ padding:20px;
 }
 
 
+/* HIDE SCROLLBARS BUT KEEP SCROLLING */
 
+.archive-column,
+.column-content,
+.article-reading{
+
+  scrollbar-width:none; /* Firefox */
+
+  -ms-overflow-style:none; /* IE */
+
+}
+
+
+.archive-column::-webkit-scrollbar,
+.column-content::-webkit-scrollbar,
+.article-reading::-webkit-scrollbar{
+
+  display:none; /* Chrome / Safari */
+
+}
 
 
 /* =====================================
@@ -588,55 +606,24 @@ padding:20px;
 
 
 @media(max-width:900px){
-
-
+   
 .archive-layout{
-
-
 grid-template-columns:
-
 1fr;
-
-
 overflow:auto;
-
 height:auto;
-
-
 }
-
-
-
 .archive-column{
-
-
 height:auto;
-
 min-height:100vh;
-
-
 }
-
-
 body{
-
 overflow:auto;
-
 }
-
-
 .article-view{
-
-
 display:block;
-
-
 }
-
-
 .article-image-panel{
-
-
 height:60vh;
 
 }

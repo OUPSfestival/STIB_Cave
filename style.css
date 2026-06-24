@@ -155,7 +155,7 @@ body{
   position:absolute;
   inset:0;
 
-  background:rgba(80,120,80,0.18);
+ background:rgba(50,100,70,0.20);
 
   pointer-events:none;
 }

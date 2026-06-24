@@ -217,13 +217,11 @@ const allTags = [
 
 tagSelects.forEach(select => {
 
-
   select.innerHTML = `
-    <option value="">Random</option>
+    <option value="" selected hidden></option>
   `;
 
-
-  allTags.forEach(tag=>{
+  allTags.forEach(tag => {
 
     select.innerHTML += `
       <option value="${tag}">
@@ -233,10 +231,7 @@ tagSelects.forEach(select => {
 
   });
 
-
 });
-
-
 
 // filter when changed
 

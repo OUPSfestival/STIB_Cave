@@ -107,7 +107,7 @@ border-left:1px solid var(--line);
 
 .column-header{
 
-height:60px;
+height:90px;
 padding:20px;
 border-bottom:none;
 }
@@ -232,7 +232,7 @@ margin-top:8px;
 
 .case-panel{
 
-padding:25px;
+padding:100px;
 border-left:1px solid var(--line);
 }
 
@@ -304,20 +304,15 @@ background:var(--bg);
 .article-content{
 
 padding:80px;
-
 overflow-y:auto;
-
 scrollbar-width:none;
-
 }
 
 
 .article-content h2{
 
 font-size:var(--title);
-
 font-weight:500;
-
 }
 
 
@@ -325,22 +320,18 @@ font-weight:500;
 .article-content div{
 
 font-size:var(--text);
-
 line-height:1.8;
-
 }
 
 
 .article-card:hover img{
 
 filter:grayscale(0%);
-
 }
 
 .article-image-panel:hover img{
 
 filter:grayscale(0%);
-
 }
 
 /* =====================================

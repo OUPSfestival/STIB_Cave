@@ -113,28 +113,28 @@ position:relative;
 .tag-select{
 
 position:absolute;
+
 right:20px;
+
 bottom:15px;
+
 border:none;
+
 background:transparent;
+
 font-family:inherit;
+
 font-size:18px;
-width:20px;
+
+width:25px;
+
 cursor:pointer;
 
-/* hide text */
-color:transparent;
-}
-
-
-.tag-select::after{
-
-content:"↓";
 color:#111;
-position:absolute;
-right:0;
-}
 
+appearance:auto;
+
+}
 
 
 .column-content{

@@ -453,7 +453,29 @@ filter:grayscale(0%);
 
 }
 
+.archive-layout{
+  position:relative;
+}
 
+.archive-layout::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:60px;
+
+  left:0;
+
+  width:100%;
+
+  height:1px;
+
+  background:var(--line);
+
+  z-index:5;
+
+}
 
 
 /* =====================================

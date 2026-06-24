@@ -122,32 +122,29 @@ body{
 
 /* CARD */
 
-.result-card{
+.archive-results-grid{
+  column-count:4;
+  column-gap:24px;
+}
 
+.result-card{
   display:inline-block;
   width:100%;
   margin-bottom:28px;
   break-inside:avoid;
   background:transparent;
   border:none;
-  cursor:pointer;
 }
 
 .result-image{
-  height:190px;
+  width:100%;
+  height:auto;
 }
 
 .result-image img{
-
   width:100%;
   height:auto;
   display:block;
-  object-fit:contain;
-  }
-.result-image img.contain-image{
-  object-fit:contain;
-  padding:12px;
-
 }
 
 .result-content{
@@ -156,6 +153,7 @@ body{
   padding-right:0;
   padding-bottom:0;
 }
+
 
 .result-content small{
   font-size:10px;

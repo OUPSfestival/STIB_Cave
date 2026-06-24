@@ -106,13 +106,26 @@ border-left:1px solid var(--line);
 
 
 .column-header{
-height:90px;
-border-bottom:1px solid var(--line);
+
+height:60px;
 padding:20px;
-position:relative;
+border-bottom:none;
 }
 
+.archive-layout{
+  position:relative;
+}
 
+.archive-layout::before{
+  content:"";
+  position:absolute;
+  top:90px;
+  left:0;
+  width:100%;
+  height:1px;
+  background:var(--line);
+  z-index:5;
+}
 
 .tag-select{
 
@@ -453,29 +466,6 @@ filter:grayscale(0%);
 
 }
 
-.archive-layout{
-  position:relative;
-}
-
-.archive-layout::before{
-
-  content:"";
-
-  position:absolute;
-
-  top:60px;
-
-  left:0;
-
-  width:100%;
-
-  height:1px;
-
-  background:var(--line);
-
-  z-index:5;
-
-}
 
 
 /* =====================================

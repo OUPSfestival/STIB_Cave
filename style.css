@@ -202,7 +202,7 @@ background:transparent;
   height:auto;
   display:block;
   object-fit:contain;
-  filter:grayscale(0%);
+  filter:grayscale(20%);
 
 }
 

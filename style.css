@@ -277,6 +277,22 @@ z-index:10;
 display:none;
 }
 
+.article-tag{
+
+font-size:var(--credit);
+
+color:#777;
+
+border:1px solid var(--line);
+
+padding:4px 8px;
+
+margin-right:6px;
+
+display:inline-block;
+
+}
+
 
 
 /* BIG IMAGE */

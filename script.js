@@ -153,3 +153,100 @@ document
   .classList.remove("hidden");
 
 });
+
+
+// TAG SYSTEM
+
+
+const tagSelects = document.querySelectorAll(".tag-select");
+
+
+// collect all tags
+
+const allTags = [
+  ...new Set(
+    articles.flatMap(article => article.tags)
+  )
+];
+
+
+// create dropdown options
+
+tagSelects.forEach(select => {
+
+
+  select.innerHTML = `
+    <option value="">Random</option>
+  `;
+
+
+  allTags.forEach(tag=>{
+
+    select.innerHTML += `
+      <option value="${tag}">
+        ${tag}
+      </option>
+    `;
+
+  });
+
+
+});
+
+
+
+// filter when changed
+
+tagSelects.forEach((select,index)=>{
+
+
+select.addEventListener("change",()=>{
+
+
+const selectedTag = select.value;
+
+
+const column = columns[index];
+
+
+column.innerHTML="";
+
+
+
+let filtered;
+
+
+
+if(selectedTag===""){
+
+filtered = shuffle(articles);
+
+}
+
+else{
+
+
+filtered = articles.filter(article=>
+
+article.tags.includes(selectedTag)
+
+);
+
+
+}
+
+
+
+filtered.forEach(article=>{
+
+column.appendChild(
+createCard(article)
+);
+
+});
+
+
+});
+
+
+});

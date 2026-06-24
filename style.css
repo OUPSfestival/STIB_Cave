@@ -17,10 +17,12 @@
 
   /* ONLY FOUR SIZES */
 
-  --title-size:32px;
+  --title-size:45px;
   --subtitle-size:16px;
-  --text-size:14px;
-  --credit-size:11px;
+  --text-size:12px;
+  --credit-size:9px;
+
+  --subtitle-weight:600;
 
 
   /* COLORS */

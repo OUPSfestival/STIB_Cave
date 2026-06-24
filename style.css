@@ -131,34 +131,25 @@ body{
 .result-card:hover{
   cursor:none;
 }
+.result-card:hover .result-image img{
+  filter:grayscale(0%);
+}
 
 .result-image{
   width:100%;
   height:auto;
   background:none;
   display:block;
-  position:relative;
-  overflow:hidden;
 }
 
 .result-image img{
   width:100%;
   height:auto;
   display:block;
-  
-  filter:
-    contrast(85%)
-    saturate(85%);
+  filter:grayscale(100%);
+  transition:0.5s ease;
 }
-.result-image::after{
-  content:"";
-  position:absolute;
-  inset:0;
 
- background:rgba(50,100,70,0.20);
-
-  pointer-events:none;
-}
 
 .result-content{
   padding-top:10px;

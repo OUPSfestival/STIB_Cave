@@ -243,8 +243,8 @@ padding-top:100px;
 border-left:1px solid var(--line);
 }
 
-.case-panel h3{
-font-size:var(--text);
+.case-panel{
+font-size:var(--subtitle);
 }
 
 .case-item{

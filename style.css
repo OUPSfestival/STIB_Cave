@@ -100,11 +100,12 @@ border-left:1px solid var(--line);
 
 
 
-.column-header{
 
-height:80px;
+.column-header{
+  
+height:90px;
 border-bottom:1px solid var(--line);
-padding:25px;
+padding:0;
 position:relative;
 }
 
@@ -113,27 +114,14 @@ position:relative;
 .tag-select{
 
 position:absolute;
-
-right:20px;
-
-bottom:15px;
-
-border:none;
-
-background:transparent;
-
+right:10px;
+top:65px;
+border:white;
+background:none;
 font-family:inherit;
-
 font-size:18px;
-
-width:25px;
-
-cursor:pointer;
-
-color:#111;
-
 appearance:auto;
-
+cursor:pointer;
 }
 
 

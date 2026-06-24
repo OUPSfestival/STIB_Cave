@@ -350,3 +350,16 @@ font-size:var(--text);
 line-height:1.8;
 
 }
+
+
+.article-card:hover img{
+
+filter:grayscale(0%);
+
+}
+
+.article-image-panel:hover img{
+
+filter:grayscale(0%);
+
+}

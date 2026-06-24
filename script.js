@@ -96,9 +96,6 @@ function runSearch() {
 
 searchInput.addEventListener('input', runSearch);
 
-document.querySelector('.search-container button')
-  .addEventListener('click', runSearch);
-
 
 /* RANDOMIZE GRID */
 const archiveGrid = document.querySelector('.archive-results-grid');

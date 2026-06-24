@@ -1,9 +1,27 @@
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
+
 body{
   margin:0;
   font-family:Arial, Helvetica, sans-serif;
   background:#f7f5f2;
   color:#111;
 }
+
+.page-container{
+  max-width:1400px;
+  margin:0 auto;
+  padding:34px;
+}
+
+img{
+  max-width:100%;
+  height:auto;
+}
+
 
 
 /* ARCHIVE HEADER */
@@ -133,8 +151,6 @@ body{
   padding:28px;
 
   margin-top:0;
-
-  box-sizing:border-box;
 }
 
 
@@ -329,7 +345,7 @@ body{
 }
 
 .conflict-layout{
-  padding:34px;
+  padding:0px;
 }
 
 .conflict-grid{
@@ -429,7 +445,7 @@ body{
 }
 
 .site-footer{
-  padding:40px 34px;
+  padding:40px;
   text-align:center;
   font-size:12px;
   color:#777;

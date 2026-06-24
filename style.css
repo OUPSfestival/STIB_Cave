@@ -6,7 +6,6 @@ body{
 }
 
 
-
 /* HEADER */
 
 .topbar{
@@ -17,20 +16,17 @@ body{
   background:white;
   border-bottom:1px solid #e2e2e2;
 }
-
 .title h1{
   margin:0;
   font-size:24px;
   font-weight:600;
   letter-spacing:-0.5px;
 }
-
 .title p{
   margin-top:4px;
   font-size:12px;
   color:#777;
 }
-
 .menu{
   display:flex;
   gap:20px;
@@ -39,84 +35,73 @@ body{
 }
 
 
-/* MAIN */
-
-.hero-europeana{
-  padding:34px;
-}
-
-.europeana-title small{
-  font-size:11px;
-  color:#888;
-  letter-spacing:1px;
-}
-
-.europeana-title h2{
-  margin-top:8px;
-  margin-bottom:28px;
-  font-size:42px;
-  font-weight:500;
-  letter-spacing:-1px;
-}
-
-
-
 /* SEARCH */
 
 .archive-search{
-  display:flex;
-  justify-content:flex-end;
   position:relative;
-  margin-bottom:24px;
 }
+
 
 .search-icon{
   border:none;
   background:none;
-  color:#12304a;
+  color:#16324a;
   font-size:34px;
+  line-height:1;
+  padding:0;
   cursor:none;
-  padding:5px;
 }
+
+
+/* hidden search field */
 
 .search-expand{
   position:absolute;
-  right:45px;
-  top:0;
-  width:0;
-  overflow:hidden;
-  transition:0.4s ease;
+  right:0;
+  top:45px;
+  width:260px;
+  opacity:0;
+  transform:translateY(-5px);
+  pointer-events:none;
+  transition:0.3s ease;
 }
 
+
+.archive-search:hover .search-expand{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+
+
 .search-expand input{
-  width:260px;
+  width:100%;
   height:42px;
-  border:1px solid #ccc;
+  border:1px solid #d8d8d8;
   background:white;
   padding:0 14px;
   font-size:14px;
-}
-
-.archive-search:hover .search-expand{
-  width:280px;
 }
 
 
 
 /* FILTERS */
 
+
 .filter-row{
   display:flex;
-  gap:10px;
+  gap:32px;
   flex-wrap:wrap;
-  margin-bottom:34px;
+  margin-bottom:55px;
 }
 
+
 .filter-row span{
-  border:1px solid #d9d9d9;
-  padding:8px 12px;
-  font-size:12px;
-  background:white;
+  border:none;
+  padding:0;
+  background:none;
+  font-size:13px;
+  color:#555;
 }
 
 
@@ -125,7 +110,7 @@ body{
 
 .archive-results-grid{
   column-count:5;
-  column-gap:60px;
+  column-gap:85px;
 }
 
 

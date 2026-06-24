@@ -77,7 +77,7 @@ margin:0 0 20px;
 
 font-size:var(--subtitle);
 font-weight:600;
-transform:translateY(-30px);
+transform:translateY(-20px);
 }
 
 
@@ -85,13 +85,13 @@ transform:translateY(-30px);
 
 font-size:var(--credit);
 color:#777;
-transform:translateY(-50px);
+transform:translateY(-40px);
 }
 
 .description{
 font-size:var(--text);
 color:#777;
-transform:translateY(-40px);
+transform:translateY(-50px);
 }
 
 

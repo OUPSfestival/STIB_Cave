@@ -12,9 +12,9 @@ body{
 }
 
 .page-container{
-  max-width:1400px;
+  max-width:1500px;
   margin:0 auto;
-  padding:34px;
+  padding:70px 60px 40px 60px;
 }
 
 img{
@@ -468,6 +468,10 @@ img{
 /* MOBILE */
 
 @media(max-width:900px){
+
+    .page-container{
+    padding:30px 18px;
+  }
 
   .popup-grid{
     grid-template-columns:1fr;

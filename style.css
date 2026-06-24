@@ -357,3 +357,98 @@ filter:grayscale(0%);
 filter:grayscale(0%);
 
 }
+
+/* =====================================
+   AUTOMATIC DARK MODE
+===================================== */
+
+@media (prefers-color-scheme: dark){
+
+  :root{
+
+    --bg:#1c1c1b;
+    --line:rgba(255,255,255,0.15);
+
+  }
+
+
+  html,
+  body{
+
+    background:var(--bg);
+    color:#eee;
+
+  }
+
+
+  .archive-column,
+  .intro-panel,
+  .case-panel,
+  .article-view,
+  .article-content{
+
+    background:#20201f;
+
+  }
+
+
+  .column-header{
+
+    border-color:rgba(255,255,255,0.15);
+
+  }
+
+
+  .article-card{
+
+    background:#252524;
+
+  }
+
+
+  .article-card:hover{
+
+    background:#2d2d2b;
+
+  }
+
+
+  .article-excerpt{
+
+    color:#bbb;
+
+  }
+
+
+  .author,
+  .article-category,
+  .credit{
+
+    color:#888;
+
+  }
+
+
+  input{
+
+    color:white;
+    border-color:rgba(255,255,255,0.2);
+
+  }
+
+
+  .tag-select{
+
+    color:white;
+
+  }
+
+
+  .article-image{
+
+    background:#111;
+
+  }
+
+
+}

@@ -106,3 +106,47 @@ cardsArray.sort(() => Math.random() - 0.5);
 cardsArray.forEach(card => {
   archiveGrid.appendChild(card);
 });
+
+fetch("data/cards.json")
+.then(response => response.json())
+.then(cards => {
+
+const grid = document.getElementById("archiveGrid");
+
+
+cards.forEach(card => {
+
+grid.innerHTML += `
+
+<div 
+class="result-card clickable-card"
+data-search="${card.tags}"
+>
+
+<div class="result-image">
+
+<img src="${card.image}" loading="lazy">
+
+</div>
+
+
+<div class="result-content">
+
+<small>${card.category}</small>
+
+<h4>${card.title}</h4>
+
+<p>
+${card.short}
+</p>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+});

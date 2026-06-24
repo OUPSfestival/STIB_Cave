@@ -150,6 +150,11 @@ function openArticle(article){
   document.getElementById("articleCategory").textContent =
     article.category;
 
+  document.getElementById("articleTags").innerHTML =
+  article.tags.map(tag => 
+    `<span class="article-tag">${tag}</span>`
+  ).join(" ");
+
 
   document.getElementById("articleImage").src =
     article.image;

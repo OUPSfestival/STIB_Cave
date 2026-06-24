@@ -19,28 +19,55 @@
 <section class="editor">
 
 
-<input id="id" placeholder="ID">
+<div class="editor-box">
 
-<input id="title" placeholder="Title">
-
-<input id="category" placeholder="Category">
-
-<input id="image" placeholder="Image path">
-
-
-<textarea id="excerpt" placeholder="Excerpt"></textarea>
+  <label>
+    Title
+  </label>
+  <input id="editTitle" type="text">
 
 
-<textarea id="body" placeholder="Body"></textarea>
+  <label>
+    Abstract
+  </label>
+  <textarea id="editAbstract"></textarea>
 
 
-<input id="tags" placeholder="Tags separated by comma">
+  <label>
+    Description
+  </label>
+  <textarea id="editDescription"></textarea>
 
 
-<button onclick="saveArticle()">
-SAVE
-</button>
+  <label>
+    Image
+  </label>
+  <input id="editImage" type="file" accept="image/*">
 
+
+  <label>
+    Tags
+  </label>
+  <input id="editTags" type="text" placeholder="plant, cave, biology">
+
+
+  <label>
+    Category
+  </label>
+  <input id="editCategory" type="text">
+
+
+  <label>
+    Credits
+  </label>
+  <input id="editCredits" type="text">
+
+
+  <button id="saveArticle">
+    Save Article
+  </button>
+
+</div>
 
 </section>
 

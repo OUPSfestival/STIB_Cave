@@ -189,7 +189,38 @@ body{
   font-size:14px;
 }
 
+/* CURSER */
 
+.plus-cursor{
+  position:fixed;
+  width:50px;
+  height:50px;
+  pointer-events:none;
+  z-index:9999;
+  display:none;
+  transform:translate(-50%,-50%);
+}
+
+.plus-cursor::before,
+.plus-cursor::after{
+  content:"";
+  position:absolute;
+  background:#5b8c5a;
+}
+
+.plus-cursor::before{
+  width:1px;
+  height:50px;
+  left:50%;
+  top:0;
+}
+
+.plus-cursor::after{
+  height:1px;
+  width:50px;
+  top:50%;
+  left:0;
+}
 
 /* POPUPS */
 

@@ -59,7 +59,7 @@ height:100vh;
 .intro-panel{
 
 padding:25px;
-
+padding-top:80px;
 }
 
 
@@ -94,11 +94,8 @@ color:#777;
 .archive-column{
 
 height:100vh;
-
 overflow:hidden;
-
 border-left:1px solid var(--line);
-
 }
 
 

@@ -138,3 +138,18 @@ document
   .classList.remove("hidden");
 
 });
+
+document
+.getElementById("articleImage")
+.addEventListener("click", ()=>{
+
+  document
+  .getElementById("articleView")
+  .classList.add("hidden");
+
+
+  document
+  .getElementById("archiveLayout")
+  .classList.remove("hidden");
+
+});

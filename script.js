@@ -15,17 +15,7 @@ function shuffle(array){
 
 // 3. Create cards
 
-const columns = [
-document.getElementById("column1"),
-document.getElementById("column2"),
-document.getElementById("column3")
-];
-
-
-articles
-.sort(()=>Math.random()-0.5)
-.forEach((article,index)=>{
-
+function createCard(article){
 
 const card=document.createElement("article");
 
@@ -57,7 +47,6 @@ ${article.title}
 ${article.excerpt}
 </div>
 
-
 </div>
 
 `;
@@ -66,10 +55,12 @@ ${article.excerpt}
 card.onclick=()=>openArticle(article);
 
 
-columns[index%3].appendChild(card);
+return card;
+
+}
 
 
-});
+
 
 
 // 4. Random distribution

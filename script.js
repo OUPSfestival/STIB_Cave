@@ -1,9 +1,11 @@
 const plusCursor = document.createElement("div");
+
 plusCursor.innerHTML = "+";
 plusCursor.style.position = "fixed";
-plusCursor.style.color = "#5b8c5a";
-plusCursor.style.fontSize = "32px";
-plusCursor.style.fontWeight = "300";
+plusCursor.style.color = "#4f8a4f";
+plusCursor.style.fontSize = "60px";
+plusCursor.style.fontWeight = "200";
+plusCursor.style.lineHeight = "1";
 plusCursor.style.pointerEvents = "none";
 plusCursor.style.zIndex = "9999";
 plusCursor.style.display = "none";
@@ -11,7 +13,6 @@ plusCursor.style.display = "none";
 document.body.appendChild(plusCursor);
 
 document.querySelectorAll(".result-card").forEach(card => {
-
   card.addEventListener("mouseenter", () => {
     plusCursor.style.display = "block";
   });
@@ -23,8 +24,9 @@ document.querySelectorAll(".result-card").forEach(card => {
 });
 
 document.addEventListener("mousemove", (e) => {
-  plusCursor.style.left = e.clientX - 10 + "px";
-  plusCursor.style.top = e.clientY - 20 + "px";
+  plusCursor.style.left = e.clientX - 25 + "px";
+  plusCursor.style.top = e.clientY - 35 + "px";
+
 });
 
 

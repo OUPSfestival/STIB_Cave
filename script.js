@@ -15,25 +15,61 @@ function shuffle(array){
 
 // 3. Create cards
 
-function createCard(article){
+const columns = [
+document.getElementById("column1"),
+document.getElementById("column2"),
+document.getElementById("column3")
+];
 
-  const card = document.createElement("div");
 
-  card.className = "card";
+articles
+.sort(()=>Math.random()-0.5)
+.forEach((article,index)=>{
 
-  card.innerHTML = `
-    <img src="${article.image}">
-    <small>${article.category}</small>
-    <h4>${article.title}</h4>
-    <p>${article.excerpt}</p>
-  `;
 
-  card.addEventListener("click", () => {
-    openArticle(article);
-  });
+const card=document.createElement("article");
 
-  return card;
-}
+card.className="article-card";
+
+
+card.innerHTML=`
+
+<div class="article-image">
+
+<img src="${article.image}">
+
+</div>
+
+
+<div class="article-info">
+
+<div class="article-category">
+${article.category}
+</div>
+
+
+<div class="article-title">
+${article.title}
+</div>
+
+
+<div class="article-excerpt">
+${article.excerpt}
+</div>
+
+
+</div>
+
+`;
+
+
+card.onclick=()=>openArticle(article);
+
+
+columns[index%3].appendChild(card);
+
+
+});
 
 
 // 4. Random distribution

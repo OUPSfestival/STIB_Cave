@@ -133,12 +133,27 @@ body{
   height:auto;
   background:none;
   display:block;
+  position:relative;
+  overflow:hidden;
 }
 
 .result-image img{
   width:100%;
   height:auto;
   display:block;
+  
+  filter:
+    contrast(85%)
+    saturate(85%);
+}
+.result-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:rgba(80,120,80,0.18);
+
+  pointer-events:none;
 }
 
 .result-content{

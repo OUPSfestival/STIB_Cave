@@ -2,7 +2,7 @@
 
 --font-main:"Inter", Arial, sans-serif;
 
---title:42px;
+--title:60px;
 --subtitle:16px;
 --text:12px;
 --credit:9px;
@@ -76,7 +76,6 @@ margin:0 0 20px;
 
 font-size:var(--subtitle);
 font-weight:600;
-
 }
 
 
@@ -84,9 +83,12 @@ font-weight:600;
 
 font-size:var(--credit);
 color:#777;
-
 }
 
+.description{
+font-size:var(--text);
+color:#777;
+}
 
 
 /* COLUMNS */

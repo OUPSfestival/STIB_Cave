@@ -99,8 +99,6 @@ border-right:none;
 }
 
 
-
-
 .column-header{
 height:60px;
 border-bottom:1px solid var(--line);
@@ -112,22 +110,17 @@ position:relative;
 
 .tag-select{
 
+appearance:auto;
 position:absolute;
-
-right:15px;
-
-top:75px;
-
+right:10px;
+top:65px;
 border:none;
-
 background:none;
-
 font-family:inherit;
-
-font-size:18px;
-
+font-size:12px;
 cursor:pointer;
-
+width:20px;
+color:transparent;
 }
 
 

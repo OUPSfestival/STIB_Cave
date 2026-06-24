@@ -231,22 +231,17 @@ margin-top:8px;
 
 /* CASE FILES */
 
-
 .case-panel{
-
-padding:100px;
+padding:25px;
+padding-top:100px;
 border-left:1px solid var(--line);
 }
 
-
 .case-panel h3{
-font-size:var(--subtitle);
+font-size:var(--text);
 }
 
-
-
 .case-item{
-
 font-size:var(--text);
 padding:15px 0;
 border-bottom:1px solid var(--line);
@@ -255,7 +250,6 @@ border-bottom:1px solid var(--line);
 
 
 /* ARTICLE VIEW */
-
 
 .article-view{
 

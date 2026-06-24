@@ -92,10 +92,16 @@ color:#777;
 /* COLUMNS */
 
 .archive-column{
-
 height:100vh;
 overflow:hidden;
-border-right:none;
+}
+
+.archive-column:first-of-type{
+border-left:1px solid var(--line);
+}
+
+.case-panel{
+border-left:1px solid var(--line);
 }
 
 

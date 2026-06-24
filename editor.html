@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>RCr 66 Editor</title>
+
+<link rel="stylesheet" href="editor.css">
+
+</head>
+
+
+<body>
+
+
+<h1>RCr 66 Editor</h1>
+
+
+<section class="editor">
+
+
+<input id="id" placeholder="ID">
+
+<input id="title" placeholder="Title">
+
+<input id="category" placeholder="Category">
+
+<input id="image" placeholder="Image path">
+
+
+<textarea id="excerpt" placeholder="Excerpt"></textarea>
+
+
+<textarea id="body" placeholder="Body"></textarea>
+
+
+<input id="tags" placeholder="Tags separated by comma">
+
+
+<button onclick="saveArticle()">
+SAVE
+</button>
+
+
+</section>
+
+
+
+<h2>Articles</h2>
+
+
+<div id="articleList"></div>
+
+
+
+<script src="articles.js"></script>
+<script src="editor.js"></script>
+
+
+</body>
+
+</html>

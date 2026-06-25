@@ -1,5 +1,16 @@
 let currentArticles = [];
 
+async function loadArticles(){
+
+    const response = await fetch(
+        "https://cave-api.manuelbischof-phil.workers.dev/api/articles"
+    );
+
+    currentArticles = await response.json();
+
+    renderList();
+}
+
 const list=document.getElementById("articleList");
 
 

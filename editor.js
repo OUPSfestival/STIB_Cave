@@ -65,71 +65,44 @@ article.tags.join(",");
 }
 
 
+async function saveArticle() {
 
-function saveArticle(){
+  let article = {
 
+    slug: document.getElementById("id").value,
 
-let article={
+    title: document.getElementById("title").value,
 
+    category: document.getElementById("category").value,
 
-id:
-document.getElementById("id").value,
+    image: document.getElementById("image").value,
 
+    excerpt: document.getElementById("excerpt").value,
 
-title:
-document.getElementById("title").value,
+    content: document.getElementById("body").value,
 
+    tags: document.getElementById("tags").value
+      .split(",")
+      .map(t => t.trim())
 
-category:
-document.getElementById("category").value,
+  };
 
+  const response = await fetch(
+    "https://cave-api.manuelbischof-phil.workers.dev/api/articles",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(article)
+    }
+  );
 
-image:
-document.getElementById("image").value,
+  const result = await response.json();
 
+  console.log(result);
 
-excerpt:
-document.getElementById("excerpt").value,
-
-
-body:
-document.getElementById("body").value,
-
-
-tags:
-document.getElementById("tags").value
-.split(",")
-.map(t=>t.trim())
-
-
-};
-
-
-
-let index=currentArticles.findIndex(
-a=>a.id===article.id
-);
-
-
-
-if(index>=0){
-
-currentArticles[index]=article;
-
-}
-else{
-
-currentArticles.push(article);
-
-}
-
-
-renderList();
-
-
-alert("saved");
-
-
+  alert("Article saved to database");
 }
 
 

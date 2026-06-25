@@ -1,5 +1,4 @@
-let currentArticles = [...articles];
-
+let currentArticles = [];
 
 const list=document.getElementById("articleList");
 

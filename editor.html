@@ -12,71 +12,112 @@
 
 <body>
 
-
-<h1>RCr 66 Editor</h1>
-
-
-<section class="editor">
-
-
-<div class="editor-box">
-
-  <label>
-    Title
-  </label>
-  <input id="editTitle" type="text">
+<header>
+    <h1>RCr 66 Archive Editor</h1>
+    <p>Biological · Geological · Symbiotic Database</p>
+</header>
 
 
-  <label>
-    Abstract
-  </label>
-  <textarea id="editAbstract"></textarea>
+<main class="workspace">
 
 
-  <label>
-    Description
-  </label>
-  <textarea id="editDescription"></textarea>
+<section class="articles-panel">
 
+    <h2>Articles</h2>
 
-  <label>
-    Image
-  </label>
-  <input id="editImage" type="file" accept="image/*">
+    <input 
+      class="search"
+      placeholder="Search articles..."
+    >
 
-
-  <label>
-    Tags
-  </label>
-  <input id="editTags" type="text" placeholder="plant, cave, biology">
-
-
-  <label>
-    Category
-  </label>
-  <input id="editCategory" type="text">
-
-
-  <label>
-    Credits
-  </label>
-  <input id="editCredits" type="text">
-
-
-  <button id="saveArticle">
-    Save Article
-  </button>
-
-</div>
+    <div id="articleList"></div>
 
 </section>
 
 
 
-<h2>Articles</h2>
+<section class="editor-panel">
 
 
-<div id="articleList"></div>
+<h2>Edit Article</h2>
+
+
+<label>
+Title
+</label>
+
+<input id="editTitle" type="text">
+
+
+<label>
+Abstract
+</label>
+
+<textarea id="editAbstract"></textarea>
+
+
+<label>
+Description
+</label>
+
+<textarea id="editDescription"></textarea>
+
+
+<label>
+Image
+</label>
+
+<input 
+id="editImage" 
+type="file" 
+accept="image/*"
+>
+
+
+<label>
+Tags
+</label>
+
+<input 
+id="editTags" 
+type="text"
+placeholder="plant, cave, biology"
+>
+
+
+<label>
+Category
+</label>
+
+<input id="editCategory" type="text">
+
+
+<label>
+Credits
+</label>
+
+<input id="editCredits" type="text">
+
+
+
+<div class="actions">
+
+<button id="saveArticle">
+SAVE ARTICLE
+</button>
+
+
+<button id="deleteArticle">
+DELETE
+</button>
+
+</div>
+
+
+</section>
+
+
+</main>
 
 
 

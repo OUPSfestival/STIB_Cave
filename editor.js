@@ -104,7 +104,9 @@ async function saveArticle() {
 
   alert("Article saved to database");
 }
-
+document
+  .getElementById("saveArticle")
+  .addEventListener("click", saveArticle);
 
 
 renderList();

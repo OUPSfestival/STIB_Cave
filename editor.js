@@ -119,4 +119,4 @@ document
   .addEventListener("click", saveArticle);
 
 
-renderList();
+loadArticles();

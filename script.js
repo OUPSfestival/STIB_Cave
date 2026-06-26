@@ -126,7 +126,7 @@ function populateRandom(){
 
 }
 
-populateRandom();
+
 
 
 // 5. OPEN ARTICLE  <-- paste here

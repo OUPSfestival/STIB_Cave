@@ -520,7 +520,53 @@ saveArticle
 );
 
 
+// ------------------------------------
+// NEW ARTICLE
+// ------------------------------------
 
+document
+.getElementById("new-article")
+.addEventListener(
+"click",
+function(){
+
+
+    currentArticle = null;
+
+
+    document.getElementById("article-id").value = "";
+
+    document.getElementById("title").value = "";
+
+    document.getElementById("category").value = "";
+
+    document.getElementById("excerpt").value = "";
+
+    document.getElementById("body").value = "";
+
+    document.getElementById("image").value = "";
+
+    document.getElementById("credits").value = "";
+
+
+    document.getElementById("publishing-date").value = "";
+
+    document.getElementById("publishing-location").value = "";
+
+    document.getElementById("publisher").value = "";
+
+    document.getElementById("infos").value = "";
+
+    document.getElementById("object-material").value = "";
+
+    document.getElementById("object-technique").value = "";
+
+    document.getElementById("sources").value = "";
+
+    document.getElementById("image-info").value = "";
+
+
+});
 
 
 

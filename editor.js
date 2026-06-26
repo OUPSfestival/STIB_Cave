@@ -122,14 +122,6 @@ function openArticle(article){
     currentArticle = article;
 
 
-
-    document
-    .getElementById("article-id")
-    .value =
-    article.id || "";
-
-
-
     document
     .getElementById("title")
     .value =
@@ -531,9 +523,6 @@ function(){
     console.log("NEW ARTICLE CLICKED");
 
 currentArticle = null;
-
-
-document.getElementById("article-id").value = "";
 
 document.getElementById("title").value = "";
 

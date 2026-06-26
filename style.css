@@ -710,6 +710,33 @@ margin-bottom:8px;
 
 }
 
+.reply-comment{
+
+    margin-left:20px;
+
+    padding-left:15px;
+
+    border-left:1px solid var(--line);
+
+    margin-top:15px;
+
+}
+
+
+.reply-comment strong{
+
+    font-size:11px;
+
+}
+
+
+.reply-comment p{
+
+    font-size:12px;
+
+    line-height:1.5;
+
+}
 
 /* =====================================
    AUTOMATIC DARK MODE

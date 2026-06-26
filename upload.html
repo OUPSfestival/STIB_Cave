@@ -1,26 +1,61 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-<title>RCr Upload</title>
-</head>
-
-
 <body>
 
+<h2>Upload Articles</h2>
 
-<h1>Uploading Articles</h1>
+<div id="status"></div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script src="supabase.js"></script>
 
-<script src="upload-data.js"></script>
+<script src="articles.js"></script>
 
-<script src="upload.js"></script>
+
+<script>
+
+async function upload(){
+
+const status = document.getElementById("status");
+
+
+for(let article of articles){
+
+
+const { error } = await supabaseClient
+.from("articles")
+.insert(article);
+
+
+
+if(error){
+
+status.innerHTML += 
+"<br>❌ " + article.id + " : " + error.message;
+
+
+}
+else{
+
+status.innerHTML +=
+"<br>✅ " + article.id;
+
+}
+
+
+}
+
+
+}
+
+
+upload();
+
+
+</script>
 
 
 </body>
-
 </html>

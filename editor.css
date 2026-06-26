@@ -389,27 +389,47 @@ object-fit:contain;
 
 
 
-
 .dialogue-panel{
 
-    margin-top:60px;
+    margin-top:40px;
 
-    padding-top:30px;
+    padding-top:25px;
 
-    border-top:3px solid #111;
+    border-top:2px solid #111;
 
 }
 
 
 .dialogue-panel h2{
 
-    font-size:16px;
+    font-size:14px;
 
     font-weight:600;
 
-    margin-bottom:25px;
+    margin-bottom:20px;
 
 }
+
+
+.editor-comment{
+
+    border-bottom:1px solid #ccc;
+
+    padding:15px 0;
+
+}
+
+
+.editor-comment button{
+
+    margin-top:10px;
+
+}
+
+
+
+
+
 
 
 @media(max-width:800px){

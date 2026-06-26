@@ -383,14 +383,24 @@ async function saveArticle(){
     console.log("UPDATE DATA:", updatedArticle);
 
 
+console.log("UPDATE PAYLOAD:", updatedArticle);
+
+const hasChanges = Object.values(updatedArticle)
+    .some(v => v !== null && v !== undefined);
+
+if (!hasChanges) {
+    alert("Nothing changed");
+    return;
+}
+
 const { data, error } = await supabaseClient
     .from("articles")
     .update(updatedArticle)
     .eq("id", currentArticle.id)
     .select();
 
-    console.log("UPDATED:", data);
-    console.log("ERROR:", error);
+console.log("UPDATED:", data);
+console.log("ERROR:", error);
 
 
     if(error){

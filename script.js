@@ -164,14 +164,16 @@ function openArticle(article){
 
      console.log("OPEN ARTICLE WORKS", article);
 
-  document
-  .getElementById("archiveLayout")
-  .classList.add("hidden");
+ document
+.getElementById("archiveLayout")
+.style.display = "none";
 
-
-  document
-  .getElementById("articleView")
-  .classList.remove("hidden");
+ document
+.getElementById("articleView")
+.classList.remove("hidden");
+document
+.getElementById("articleView")
+.style.display = "grid";
 
 
   document.getElementById("articleTitle").textContent =

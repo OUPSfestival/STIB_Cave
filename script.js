@@ -11,10 +11,10 @@ async function loadArticles() {
         return;
     }
 
-    articles = data;
+   articles = data;
 
-    createTagDropdowns();
-    populateRandom();
+createTagDropdowns();
+populateRandom();
 }
 
 loadArticles();
@@ -234,37 +234,39 @@ document
 // TAG SYSTEM
 
 
+// TAG SYSTEM
+
 const tagSelects = document.querySelectorAll(".tag-select");
 
+function createTagDropdowns() {
 
-// collect all tags
+  const allTags = [
+    ...new Set(
+      articles.flatMap(article => article.tags)
+    )
+  ];
 
-const allTags = [
-  ...new Set(
-    articles.flatMap(article => article.tags)
-  )
-];
+  tagSelects.forEach(select => {
 
-
-// create dropdown options
-
-tagSelects.forEach(select => {
-
-  select.innerHTML = `
-    <option value="" selected hidden></option>
-  `;
-
-  allTags.forEach(tag => {
-
-    select.innerHTML += `
-      <option value="${tag}">
-        ${tag}
-      </option>
+    select.innerHTML = `
+      <option value="" selected hidden></option>
     `;
+
+    allTags.forEach(tag => {
+
+      select.innerHTML += `
+        <option value="${tag}">
+          ${tag}
+        </option>
+      `;
+
+    });
 
   });
 
-});
+}
+
+
 
 // filter when changed
 

@@ -352,15 +352,9 @@ function(){
 
 async function saveArticle(){
 
-let url = API;
-let method = "POST";
-
-
-if(currentArticle && currentArticle.id){
-
-    url = `${API}/${currentArticle.id}`;
-    method = "PUT";
-
+if(!currentArticle){
+    alert("No article selected");
+    return;
 }
 
 
@@ -386,53 +380,27 @@ const updatedArticle = {
 };
 
 
-try{
+const { data, error } = await supabaseClient
+.from("articles")
+.update(updatedArticle)
+.eq("id", currentArticle.id);
 
-const response = await fetch(
-url,
-{
-method: method,
-headers:{
-"Content-Type":"application/json"
-},
-body: JSON.stringify(updatedArticle)
+
+if(error){
+
+console.error(error);
+alert("Save error");
+
+return;
+
 }
-);
 
-
-const result = await response.json();
-
-console.log(result);
-
-
-if(result.success){
 
 alert("Article saved");
 
-await loadArticles();
+loadArticles();
 
 }
-
-else{
-
-alert("ERROR: " + result.error);
-
-}
-
-
-}
-
-catch(error){
-
-console.error(error);
-
-alert("Connection error");
-
-}
-
-
-}
-
 
 
 

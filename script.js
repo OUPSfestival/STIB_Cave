@@ -164,6 +164,8 @@ function populateRandom(){
 
 function openArticle(article){
 
+     console.log(article);
+
   document
   .getElementById("archiveLayout")
   .classList.add("hidden");

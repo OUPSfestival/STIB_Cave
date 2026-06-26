@@ -171,6 +171,46 @@ function openArticle(article){
 
 
 
+    document.getElementById("publishing-date").value =
+    article.publishing_date || "";
+
+
+
+    document.getElementById("publishing-location").value =
+    article.publishing_location || "";
+
+
+
+    document.getElementById("publisher").value =
+    article.publisher || "";
+
+
+
+    document.getElementById("infos").value =
+    article.infos || "";
+
+
+
+    document.getElementById("object-material").value =
+    article.object_material || "";
+
+
+
+    document.getElementById("object-technique").value =
+    article.object_technique || "";
+
+
+
+    document.getElementById("sources").value =
+    article.sources || "";
+
+
+
+    document.getElementById("image-info").value =
+    article.image_info || "";
+
+
+
     showTags(article.tags);
 
 
@@ -354,8 +394,40 @@ async function saveArticle(){
 
 
         credits:
-        document.getElementById("credits").value
+        document.getElementById("credits").value,
 
+
+
+        publishing_date:
+        document.getElementById("publishing-date").value,
+
+
+        publishing_location:
+        document.getElementById("publishing-location").value,
+
+
+        publisher:
+        document.getElementById("publisher").value,
+
+
+        infos:
+        document.getElementById("infos").value,
+
+
+        object_material:
+        document.getElementById("object-material").value,
+
+
+        object_technique:
+        document.getElementById("object-technique").value,
+
+
+        sources:
+        document.getElementById("sources").value,
+
+
+        image_info:
+        document.getElementById("image-info").value
 
 
     };

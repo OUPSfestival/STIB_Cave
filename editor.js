@@ -576,4 +576,10 @@ function(){
 
 // START
 
+
+console.log(
+document.getElementById("new-article")
+);
+
+
 loadArticles();

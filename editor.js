@@ -383,8 +383,11 @@ const updatedArticle = {
 const { data, error } = await supabaseClient
 .from("articles")
 .update(updatedArticle)
-.eq("id", currentArticle.id);
+.eq("id", currentArticle.id)
+.select();
 
+console.log("SAVE RESULT:", data);
+console.log("SAVE ERROR:", error);
 
 if(error){
 

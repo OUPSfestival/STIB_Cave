@@ -533,10 +533,6 @@ function(){
 
     currentArticle = null;
 
-    document.getElementById("title").value = "";
-
-});
-
 
     document.getElementById("article-id").value = "";
 
@@ -569,17 +565,10 @@ function(){
 
     document.getElementById("image-info").value = "";
 
-
 });
-
-
 
 // START
 
-
-console.log(
-document.getElementById("new-article")
-);
 
 
 loadArticles();

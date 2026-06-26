@@ -1,3 +1,30 @@
+var articles = [];
+
+async function loadArticles() {
+
+    const { data, error } = await supabaseClient
+        .from("articles")
+        .select("*");
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    articles = data;
+
+    createTagDropdowns();
+    populateRandom();
+}
+
+loadArticles();
+
+
+
+
+
+
+
 // 1. Columns
 const columns = [
   document.getElementById("column1"),

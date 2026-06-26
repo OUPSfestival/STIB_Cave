@@ -162,7 +162,7 @@ function populateRandom(){
 
 function openArticle(article){
 
-     console.log(article);
+     console.log("OPEN ARTICLE WORKS", article);
 
   document
   .getElementById("archiveLayout")

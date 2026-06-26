@@ -191,7 +191,7 @@ function openArticle(article){
     article.credits;
 
 
-  document.getElementById("articleBody").textContent =
+  document.getElementById("articleBody").innerHTML =
     article.body;
 
 

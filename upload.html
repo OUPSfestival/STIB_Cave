@@ -1,51 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>RCr 66 Upload</title>
-</head>
-
-<body>
-
-<h1>RCr 66 Article Upload</h1>
-
-<div id="status"></div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script src="supabase.js"></script>
-<script src="articles.js"></script>
-
-
-<script>
-
-
-const status = document.getElementById("status");
-
-
 async function uploadArticles(){
 
 
-console.log("Articles found:", articles);
+console.log("Articles:", articles);
 
 
-if(!articles || articles.length === 0){
-
-status.innerHTML =
-"ERROR: No articles found";
-
-return;
-
-}
-
-
-
-for(let article of articles){
-
-
-status.innerHTML +=
-"<br>Uploading: " + article.id;
-
+for(const article of articles){
 
 
 const {data,error}=await supabaseClient
@@ -64,19 +23,21 @@ tags:article.tags
 });
 
 
-
 if(error){
 
-console.log(error);
-
-status.innerHTML +=
-" ❌ ERROR";
+console.log(
+"ERROR:",
+article.id,
+error
+);
 
 }
 else{
 
-status.innerHTML +=
-" ✅ DONE";
+console.log(
+"UPLOADED:",
+article.id
+);
 
 }
 
@@ -84,16 +45,10 @@ status.innerHTML +=
 }
 
 
+alert("Upload finished");
+
 
 }
-
 
 
 uploadArticles();
-
-
-</script>
-
-
-</body>
-</html>

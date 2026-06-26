@@ -61,9 +61,11 @@
     By introducing invented materials into an archival framework, 
     the project investigates how narratives of the past are produced and legitimized.
   </p>
-  </p>Public Dialogue invites visitors to share interpretations,
-    questions, and alternative readings of the archive.
-    Contributions become part of the ongoing discussion surrounding each object. </p>
+ <p class="description">
+  Public Dialogue invites visitors to share interpretations,
+  questions, and alternative readings of the archive.
+  Contributions become part of the ongoing discussion surrounding each object.
+</p>
     <input
       type="text"
       id="searchInput"
@@ -126,67 +128,72 @@
   
   <!-- CONTRIBUTIONS -->
 
-  <aside class="case-panel">
-  <div id="publicDialogue">
-    <h4>PUBLIC DIALOGUE</h4>
+ <aside class="case-panel">
+
+    <h3>Dialectical Arguments</h3>
 
 
     <div id="publicDialogue">
 
-      
+        <h4>PUBLIC DIALOGUE</h4>
 
 
-       <div class="your-contribution">
+        <div class="your-contribution">
 
-    <h5>
-        Your contribution
-    </h5>
+            <h5>Your contribution</h5>
 
 
-    <div class="contribution-box">
+            <div class="contribution-box">
+
+                <label>
+                    Article
+                </label>
+
+                <input
+                    id="dialogueArticle"
+                    type="text"
+                    placeholder="Article name"
+                >
 
 
-        <label>
-            Article
-        </label>
+                <label>
+                    Your name
+                </label>
 
-        <input
-        id="dialogueArticle"
-        type="text"
-        placeholder="Article name"
-        >
-
-
-        <label>
-            Your name
-        </label>
-
-        <input
-        id="dialogueName"
-        type="text"
-        placeholder="Your name"
-        >
+                <input
+                    id="dialogueName"
+                    type="text"
+                    placeholder="Your name"
+                >
 
 
-        <label>
-            Your contribution
-        </label>
+                <label>
+                    Your contribution
+                </label>
 
-        <textarea
-        id="dialogueComment"
-        placeholder="Write your interpretation..."
-        ></textarea>
+                <textarea
+                    id="dialogueComment"
+                    placeholder="Write your interpretation..."
+                ></textarea>
 
 
-        <button id="submitDialogue">
-            Publish
-        </button>
+                <button id="submitDialogue">
+                    Publish
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+        <div id="dialogueList"></div>
 
 
     </div>
 
 
-</div>
+</aside>
 
 <!-- ARTICLE VIEW -->
 

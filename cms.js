@@ -1,40 +1,93 @@
-const list=document.getElementById("articleList");
+const API =
+"https://cave-api.manuelbischof-phil.workers.dev/api/articles";
 
-const demo=[
 
-{
-title:"Pelvibacter lucens",
-category:"Bacterial Colony"
-},
+const articleList = document.getElementById("articleList");
 
-{
-title:"Lichen Exchange Systems",
-category:"Symbiosis"
-},
+let articles = [];
+let currentArticle = null;
 
-{
-title:"Thermadrone",
-category:"Artefact"
+
+
+async function loadArticles(){
+
+    const response = await fetch(API);
+
+    articles = await response.json();
+
+    renderList();
+
 }
 
-];
 
-demo.forEach(article=>{
 
-const div=document.createElement("div");
+function renderList(){
 
-div.className="article";
+    articleList.innerHTML = "";
 
-div.innerHTML=`
+    articles.forEach(article => {
 
-<strong>${article.title}</strong>
+        const item = document.createElement("div");
 
-<br>
+        item.className = "article";
 
-<span>${article.category}</span>
+        item.innerHTML = `
+            <strong>${article.title}</strong>
+            <br>
+            <small>${article.category || "No category"}</small>
+        `;
 
-`;
 
-list.appendChild(div);
+        item.onclick = () => openArticle(article);
 
-});
+
+        articleList.appendChild(item);
+
+    });
+
+}
+
+
+
+function openArticle(article){
+
+    currentArticle = article;
+
+
+    document.getElementById("title").value =
+    article.title || "";
+
+
+    document.getElementById("category").value =
+    article.category || "";
+
+
+    document.getElementById("tags").value =
+    article.tags || "";
+
+
+    document.getElementById("excerpt").value =
+    article.excerpt || "";
+
+
+    document.getElementById("content").value =
+    article.content || "";
+
+}
+
+
+
+document
+.getElementById("newArticle")
+.onclick = () => {
+
+    currentArticle = null;
+
+    document.querySelectorAll("input, textarea")
+    .forEach(field => field.value = "");
+
+};
+
+
+
+loadArticles();

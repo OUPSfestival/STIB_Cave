@@ -130,7 +130,23 @@ document.createElement("div");
 list.id = "dialogueList";
 
 
-comments.forEach(comment=>{
+// only main comments
+
+const mainComments =
+comments.filter(comment => 
+comment.parent_id === null
+);
+
+
+
+mainComments.forEach(comment=>{
+
+
+const replies =
+comments.filter(reply =>
+reply.parent_id === comment.id
+);
+
 
 
 list.innerHTML += `
@@ -165,6 +181,41 @@ Reply
 <div 
 id="reply-${comment.id}"
 class="reply-box">
+</div>
+
+
+
+<div class="replies">
+
+
+${
+
+replies.map(reply => `
+
+<div class="reply-comment">
+
+
+<strong>
+${reply.author}
+</strong>
+
+
+<p>
+${reply.content}
+</p>
+
+
+<small>
+${reply.created_at}
+</small>
+
+
+</div>
+
+`).join("")
+
+}
+
 
 </div>
 
@@ -172,6 +223,7 @@ class="reply-box">
 </div>
 
 `;
+
 
 
 });

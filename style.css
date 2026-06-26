@@ -450,7 +450,160 @@ filter:grayscale(0%);
 }
 
 
+/* PUBLIC DIALOGUE */
 
+#publicDialogue h4{
+
+    margin-bottom:25px;
+
+}
+
+
+/* contribution button */
+
+.contribution-trigger{
+
+    border:1px solid #ccc;
+
+    padding:12px;
+
+    font-size:13px;
+
+    cursor:pointer;
+
+    margin-bottom:20px;
+
+}
+
+
+
+/* hover opens form */
+
+.contribution-box{
+
+    display:none;
+
+    border:1px solid #ddd;
+
+    padding:15px;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.contribution-trigger:hover + .contribution-box,
+.contribution-box:hover{
+
+    display:block;
+
+}
+
+
+
+/* form styling */
+
+.contribution-box label{
+
+    display:block;
+
+    font-size:11px;
+
+    margin-top:12px;
+
+}
+
+
+
+.contribution-box input,
+.contribution-box textarea{
+
+    width:100%;
+
+    border:1px solid #ddd;
+
+    padding:8px;
+
+    font-family:inherit;
+
+    font-size:12px;
+
+}
+
+
+
+.contribution-box textarea{
+
+    height:100px;
+
+}
+
+
+
+.contribution-box button{
+
+    margin-top:12px;
+
+    padding:8px 15px;
+
+    background:none;
+
+    border:1px solid #000;
+
+    cursor:pointer;
+
+}
+
+
+
+/* comments */
+
+#dialogueList{
+
+    margin-top:30px;
+
+}
+
+
+
+.dialogue-comment{
+
+    border-top:1px solid #ddd;
+
+    padding-top:15px;
+
+    margin-top:20px;
+
+}
+
+
+
+.dialogue-comment strong{
+
+    font-size:12px;
+
+}
+
+
+
+.dialogue-comment p{
+
+    font-size:13px;
+
+    line-height:1.5;
+
+}
+
+
+
+.dialogue-comment small{
+
+    font-size:10px;
+
+    opacity:0.6;
+
+}
 
 
 

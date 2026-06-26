@@ -32,12 +32,11 @@ async function loadArticles(){
 
     }
 
-    catch(error){
+   catch(error){
 
-        console.error(
-            "Could not load articles:",
-            error
-        );
+    console.error("SAVE ERROR:", error);
+
+    alert(error.message);
 
     }
 

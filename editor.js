@@ -355,6 +355,8 @@ async function saveArticle(){
         alert("No article selected");
         return;
     }
+    
+    console.log("SAVE ID:", currentArticle.id);
 
     const updatedArticle = {
 

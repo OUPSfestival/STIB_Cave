@@ -1,5 +1,4 @@
-const articles = [
-{
+let articles = [];{
 id:"pelvibacter",
 
 title:"Pelvibacter lucens",

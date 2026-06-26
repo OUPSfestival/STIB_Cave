@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RCr 66 Editor</title>
+<title>OUPS Archive Editor</title>
 
 <link rel="stylesheet" href="editor.css">
 
@@ -12,104 +14,62 @@
 
 <body>
 
-<header>
-    <h1>RCr 66 Archive Editor</h1>
-    <p>Biological · Geological · Symbiotic Database</p>
+
+<header class="topbar">
+
+    <div>
+        <h1>OUPS Archive Editor</h1>
+        <p>Documentation management system</p>
+    </div>
+
+    <div class="actions">
+        <button class="secondary">New Article</button>
+        <button class="primary">Save</button>
+    </div>
+
 </header>
 
 
-<main class="workspace">
 
-
-<section class="articles-panel">
-
-    <h2>Articles</h2>
-
-    <input 
-      class="search"
-      placeholder="Search articles..."
-    >
-
-    <div id="articleList"></div>
-
-</section>
+<main>
 
 
 
-<section class="editor-panel">
+<section>
+
+<h2>Article Information</h2>
 
 
-<h2>Edit Article</h2>
-
-
-<label>
-Title
-</label>
-
-<input id="editTitle" type="text">
-
-
-<label>
-Abstract
-</label>
-
-<textarea id="editAbstract"></textarea>
-
-
-<label>
-Description
-</label>
-
-<textarea id="editDescription"></textarea>
-
-
-<label>
-Image
-</label>
-
-<input 
-id="editImage" 
-type="file" 
-accept="image/*"
->
-
-
-<label>
-Tags
-</label>
-
-<input 
-id="editTags" 
-type="text"
-placeholder="plant, cave, biology"
->
-
-
-<label>
-Category
-</label>
-
-<input id="editCategory" type="text">
-
-
-<label>
-Credits
-</label>
-
-<input id="editCredits" type="text">
+<label>Category</label>
+<select>
+<option>Select category</option>
+<option>Exhibition</option>
+<option>Performance</option>
+<option>Artist</option>
+<option>Publication</option>
+<option>Documentation</option>
+</select>
 
 
 
-<div class="actions">
-
-<button id="saveArticle">
-SAVE ARTICLE
-</button>
+<label>Title</label>
+<input type="text">
 
 
-<button id="deleteArticle">
-DELETE
-</button>
+
+<label>Summary</label>
+<textarea rows="4"></textarea>
+
+
+
+<label>Tags</label>
+
+<div class="tags">
+
+<span>Performance ×</span>
+<span>Video ×</span>
+
+<button>+ Add tag</button>
 
 </div>
 
@@ -117,12 +77,118 @@ DELETE
 </section>
 
 
+
+
+
+<section>
+
+<h2>Publication</h2>
+
+
+<label>Publishing Date</label>
+<input type="date">
+
+
+
+<label>Publishing Location</label>
+<input type="text">
+
+
+
+<label>Publisher</label>
+<input type="text">
+
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<h2>Object Description</h2>
+
+
+<label>Infos</label>
+<textarea rows="5"></textarea>
+
+
+
+<label>Object Material</label>
+<input type="text">
+
+
+
+<label>Object Technique</label>
+<input type="text">
+
+
+
+<label>Sources</label>
+<textarea rows="5"></textarea>
+
+
+</section>
+
+
+
+
+
+
+
+
+<section>
+
+<h2>Media</h2>
+
+
+
+<label>Image</label>
+
+<input type="file">
+
+
+
+<div class="image-preview">
+
+Image preview
+
+</div>
+
+
+
+<label>Image Information</label>
+
+<textarea rows="3"></textarea>
+
+
+
+<label>Image Credits</label>
+
+<input type="text">
+
+
+</section>
+
+
+
+
+
 </main>
 
 
 
-<script src="articles.js"></script>
-<script src="editor.js"></script>
+<footer>
+
+<button class="save-button">
+SAVE ARTICLE
+</button>
+
+</footer>
+
 
 
 </body>

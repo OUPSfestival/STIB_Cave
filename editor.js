@@ -383,6 +383,7 @@ console.log("ID:", currentArticle.id);
     
 cconst { data, error } = await supabase
   .from("articles")
+    console.log("UPDATE DATA:", updateData);
   .update(updateData)
   .eq("id", currentArticle.id)
   .select();

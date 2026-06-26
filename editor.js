@@ -349,12 +349,11 @@ function(){
 
 async function saveArticle(){
 
-
 let url = API;
 let method = "POST";
 
 
-if(currentArticle){
+if(currentArticle && currentArticle.id){
 
     url = `${API}/${currentArticle.id}`;
     method = "PUT";
@@ -362,134 +361,71 @@ if(currentArticle){
 }
 
 
-    const updatedArticle = {
+const updatedArticle = {
 
+    title: document.getElementById("title").value,
+    category: document.getElementById("category").value,
+    excerpt: document.getElementById("excerpt").value,
+    content: document.getElementById("body").value,
+    image: document.getElementById("image").value,
+    credits: document.getElementById("credits").value,
 
-        title:
-        document.getElementById("title").value,
+    publishing_date: document.getElementById("publishing-date").value,
+    publishing_location: document.getElementById("publishing-location").value,
+    publisher: document.getElementById("publisher").value,
 
+    infos: document.getElementById("infos").value,
+    object_material: document.getElementById("object-material").value,
+    object_technique: document.getElementById("object-technique").value,
+    sources: document.getElementById("sources").value,
+    image_info: document.getElementById("image-info").value
 
-        category:
-        document.getElementById("category").value,
+};
 
 
-        excerpt:
-        document.getElementById("excerpt").value,
+try{
 
+const response = await fetch(
+url,
+{
+method: method,
+headers:{
+"Content-Type":"application/json"
+},
+body: JSON.stringify(updatedArticle)
+}
+);
 
-        content:
-        document.getElementById("body").value,
 
+const result = await response.json();
 
-        image:
-        document.getElementById("image").value,
+console.log(result);
 
 
-        credits:
-        document.getElementById("credits").value,
+if(result.success){
 
+alert("Article saved");
 
+await loadArticles();
 
-        publishing_date:
-        document.getElementById("publishing-date").value,
+}
 
+else{
 
-        publishing_location:
-        document.getElementById("publishing-location").value,
+alert("ERROR: " + result.error);
 
+}
 
-        publisher:
-        document.getElementById("publisher").value,
 
+}
 
-        infos:
-        document.getElementById("infos").value,
+catch(error){
 
+console.error(error);
 
-        object_material:
-        document.getElementById("object-material").value,
+alert("Connection error");
 
-
-        object_technique:
-        document.getElementById("object-technique").value,
-
-
-        sources:
-        document.getElementById("sources").value,
-
-
-        image_info:
-        document.getElementById("image-info").value
-
-
-    };
-
-
-
-
-    try{
-
-
-        const response =
-       await fetch(
-    url,
-    {
-
-        method:method,
-                headers:{
-
-                    "Content-Type":
-                    "application/json"
-
-                },
-
-                body:
-                JSON.stringify(updatedArticle)
-
-            }
-        );
-
-
-
-        if(response.ok){
-
-
-            alert(
-            "Article saved"
-            );
-
-
-            loadArticles();
-
-
-        }
-
-        else{
-
-
-            alert(
-            "Save failed"
-            );
-
-
-        }
-
-
-    }
-
-
-    catch(error){
-
-
-        console.error(error);
-
-
-        console.error("SAVE ERROR:", error);
-        alert("Connection error");
-
-
-    }
-
+}
 
 
 }

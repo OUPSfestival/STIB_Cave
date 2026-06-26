@@ -319,44 +319,20 @@ function scrollToColumn(target){
 
 function mobileView(view){
 
-
-document.querySelector(".intro-panel").style.display="none";
-
-document.querySelectorAll(".archive-column")
-.forEach(col=>{
-col.style.display="none";
-});
-
-document.querySelector(".case-panel").style.display="none";
+const layout =
+document.getElementById("archiveLayout");
 
 
-
-if(view==="info"){
-
-document.querySelector(".intro-panel")
-.style.display="block";
-
-}
+layout.classList.remove(
+"show-info",
+"show-articles",
+"show-dialogue"
+);
 
 
-
-if(view==="articles"){
-
-document.querySelectorAll(".archive-column")
-.forEach(col=>{
-col.style.display="block";
-});
-
-}
-
-
-
-if(view==="dialogue"){
-
-document.querySelector(".case-panel")
-.style.display="block";
-
-}
+layout.classList.add(
+"show-" + view
+);
 
 
 }

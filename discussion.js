@@ -184,3 +184,116 @@ container.appendChild(list);
 
 
 loadDialogue();
+
+
+// ==============================
+// OPEN REPLY BOX
+// ==============================
+
+function openReply(id){
+
+
+const box =
+document.getElementById(
+"reply-" + id
+);
+
+
+
+box.innerHTML = `
+
+<input 
+id="replyName-${id}"
+placeholder="Your name"
+>
+
+
+<textarea
+id="replyText-${id}"
+placeholder="Your reply"
+></textarea>
+
+
+<button onclick="sendReply(${id})">
+Publish reply
+</button>
+
+`;
+
+}
+
+
+// ==============================
+// SEND REPLY
+// ==============================
+
+async function sendReply(parentID){
+
+
+const name =
+document.getElementById(
+"replyName-" + parentID
+).value;
+
+
+
+const text =
+document.getElementById(
+"replyText-" + parentID
+).value;
+
+
+
+if(!text){
+
+alert(
+"Write a reply"
+);
+
+return;
+
+}
+
+
+
+await fetch(
+`${API_URL}/api/contributions`,
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+article_id:"",
+
+parent_id:parentID,
+
+author:name || "Anonymous",
+
+content:text
+
+})
+
+}
+
+);
+
+
+
+alert(
+"Reply published"
+);
+
+
+
+location.reload();
+
+
+}
+
+window.openReply = openReply;
+window.sendReply = sendReply;

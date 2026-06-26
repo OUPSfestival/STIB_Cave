@@ -1,196 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>RCr 66 Archive Editor</title>
-
-<link rel="stylesheet" href="editor.css">
-
-</head>
+<main class="layout">
 
 
-<body>
+<aside class="article-list">
+
+<h2>Existing Articles</h2>
+
+<div id="articles-container">
+
+<!-- Javascript will insert articles here -->
+
+</div>
 
 
-<header class="topbar">
-
-    <div>
-        <h1>RCr 66 Archive Editor</h1>
-        <p>Documentation management system</p>
-    </div>
-
-    <div class="actions">
-        <button class="secondary">New Article</button>
-        <button class="primary">Save</button>
-    </div>
-
-</header>
+</aside>
 
 
 
-<main>
 
+<section class="editor-panel">
 
-
-<section>
 
 <h2>Article Information</h2>
 
 
-<label>Category</label>
-<select>
-<option>Select category</option>
-<option>Exhibition</option>
-<option>Performance</option>
-<option>Artist</option>
-<option>Publication</option>
-<option>Documentation</option>
-</select>
+<label>ID</label>
+<input id="article-id" readonly>
 
 
 
 <label>Title</label>
-<input type="text">
+<input id="title">
+
+
+
+<label>Category</label>
+<input id="category">
 
 
 
 <label>Summary</label>
-<textarea rows="4"></textarea>
+<textarea id="excerpt"></textarea>
 
 
 
 <label>Tags</label>
 
-<div class="tags">
-
-<span>Performance ×</span>
-<span>Video ×</span>
-
-<button>+ Add tag</button>
-
-</div>
-
-
-</section>
+<div id="tags" class="tags"></div>
 
 
 
-
-
-<section>
 
 <h2>Publication</h2>
 
 
 <label>Publishing Date</label>
-<input type="date">
+<input id="date" type="date">
 
 
 
 <label>Publishing Location</label>
-<input type="text">
+<input id="location">
 
 
 
 <label>Publisher</label>
-<input type="text">
-
-
-</section>
+<input id="publisher">
 
 
 
 
-
-
-
-<section>
 
 <h2>Object Description</h2>
 
 
 <label>Infos</label>
-<textarea rows="5"></textarea>
+<textarea id="body"></textarea>
 
 
 
 <label>Object Material</label>
-<input type="text">
+<input id="material">
 
 
 
 <label>Object Technique</label>
-<input type="text">
+<input id="technique">
 
 
 
 <label>Sources</label>
-<textarea rows="5"></textarea>
-
-
-</section>
+<textarea id="sources"></textarea>
 
 
 
 
-
-
-
-
-<section>
 
 <h2>Media</h2>
 
 
-
 <label>Image</label>
 
-<input type="file">
+<input id="image">
 
 
 
 <div class="image-preview">
 
-Image preview
+<img id="preview">
 
 </div>
 
 
+<label>Credits</label>
 
-<label>Image Information</label>
-
-<textarea rows="3"></textarea>
-
+<input id="credits">
 
 
-<label>Image Credits</label>
-
-<input type="text">
-
-
-</section>
-
-
-
-
-
-</main>
-
-
-
-<footer>
 
 <button class="save-button">
 SAVE ARTICLE
 </button>
 
-</footer>
 
 
+</section>
 
-</body>
 
-</html>
+</main>

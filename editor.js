@@ -531,39 +531,43 @@ function(){
 
     console.log("NEW ARTICLE CLICKED");
 
-    currentArticle = null;
+currentArticle = null;
 
 
-    document.getElementById("article-id").value = "";
+document.getElementById("article-id").value = "";
 
-    document.getElementById("title").value = "";
+document.getElementById("title").value = "";
 
-    document.getElementById("category").value = "";
+document.getElementById("category").value = "";
 
-    document.getElementById("excerpt").value = "";
+document.getElementById("excerpt").value = "";
 
-    document.getElementById("body").value = "";
+document.getElementById("body").value = "";
 
-    document.getElementById("image").value = "";
+document.getElementById("image").value = "";
 
-    document.getElementById("credits").value = "";
+document.getElementById("credits").value = "";
 
 
-    document.getElementById("publishing-date").value = "";
+document.getElementById("publishing-date").value = "";
 
-    document.getElementById("publishing-location").value = "";
+document.getElementById("publishing-location").value = "";
 
-    document.getElementById("publisher").value = "";
+document.getElementById("publisher").value = "";
 
-    document.getElementById("infos").value = "";
 
-    document.getElementById("object-material").value = "";
+document.getElementById("infos").value = "";
 
-    document.getElementById("object-technique").value = "";
+document.getElementById("object-material").value = "";
 
-    document.getElementById("sources").value = "";
+document.getElementById("object-technique").value = "";
 
-    document.getElementById("image-info").value = "";
+document.getElementById("sources").value = "";
+
+document.getElementById("image-info").value = "";
+
+
+document.getElementById("title").focus();
 
 });
 

@@ -381,12 +381,11 @@ const updatedArticle = {
 console.log("CURRENT ARTICLE:", currentArticle);
 console.log("ID:", currentArticle.id);
     
-const { data, error } = await supabaseClient
-.from("articles")
-.update(updatedArticle)
-.eq("id", 5)
-.select();
-    
+cconst { data, error } = await supabase
+  .from("articles")
+  .update(updateData)
+  .eq("id", currentArticle.id)
+  .select();
 
 console.log("UPDATED:", data);
 console.log("ERROR:", error);

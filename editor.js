@@ -499,3 +499,118 @@ document.getElementById("title").focus();
 
 
 loadArticles();
+
+
+// ==============================
+// LOAD PUBLIC DIALOGUE COMMENTS
+// ==============================
+
+async function loadEditorComments(){
+
+
+const response = await fetch(
+"https://cave-api.manuelbischof-phil.workers.dev/api/contributions"
+);
+
+
+const comments = await response.json();
+
+
+
+const container =
+document.getElementById(
+"editorComments"
+);
+
+
+
+container.innerHTML = "";
+
+
+
+comments.forEach(comment=>{
+
+
+container.innerHTML += `
+
+<div class="editor-comment">
+
+
+<strong>
+${comment.author}
+</strong>
+
+
+<p>
+${comment.content}
+</p>
+
+
+<small>
+${comment.created_at}
+</small>
+
+
+<button onclick="deleteComment(${comment.id})">
+Delete
+</button>
+
+
+</div>
+
+`;
+
+
+});
+
+
+}
+
+
+
+// ==============================
+// DELETE COMMENT
+// ==============================
+
+async function deleteComment(id){
+
+
+const confirmDelete =
+confirm(
+"Delete this contribution?"
+);
+
+
+
+if(!confirmDelete){
+
+return;
+
+}
+
+
+
+await fetch(
+
+`https://cave-api.manuelbischof-phil.workers.dev/api/contributions/${id}`,
+
+{
+
+method:"DELETE"
+
+}
+
+);
+
+
+
+loadEditorComments();
+
+
+}
+
+
+
+// start
+
+loadEditorComments();

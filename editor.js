@@ -529,8 +529,13 @@ document
 "click",
 function(){
 
+    console.log("NEW ARTICLE CLICKED");
 
     currentArticle = null;
+
+    document.getElementById("title").value = "";
+
+});
 
 
     document.getElementById("article-id").value = "";

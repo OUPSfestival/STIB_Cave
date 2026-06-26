@@ -1,9 +1,21 @@
 
-// Cloudflare API connection
+async function loadArticles(){
 
+    const { data, error } = await supabaseClient
+        .from("articles")
+        .select("*")
+        .order("title");
 
-const API =
-"https://cave-api.manuelbischof-phil.workers.dev/api/articles";
+    if(error){
+        console.error(error);
+        return;
+    }
+
+    articles = data;
+
+    renderArticleList();
+
+}
 
 
 let articles = [];
@@ -18,28 +30,19 @@ let currentArticle = null;
 
 async function loadArticles(){
 
+    const { data, error } = await supabaseClient
+        .from("articles")
+        .select("*")
+        .order("title");
 
-    try {
+    if(error){
+        console.error(error);
+        return;
+    }
 
-        const response = await fetch(API);
-
-       articles = await response.json();
-
-       console.log("LOADED ARTICLES:", articles);
+    articles = data;
 
     renderArticleList();
-
-
-    }
-
-   catch(error){
-
-    console.error("SAVE ERROR:", error);
-
-    alert(error.message);
-
-    }
-
 
 }
 
@@ -366,7 +369,7 @@ const updatedArticle = {
     title: document.getElementById("title").value,
     category: document.getElementById("category").value,
     excerpt: document.getElementById("excerpt").value,
-    content: document.getElementById("body").value,
+    body: document.getElementById("body").value,
     image: document.getElementById("image").value,
     credits: document.getElementById("credits").value,
 

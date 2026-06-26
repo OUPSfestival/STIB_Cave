@@ -824,145 +824,169 @@ margin-bottom:8px;
 /* =====================================
    MOBILE VERSION
 ===================================== */
+@media (max-width: 700px) {
 
-.mobile-nav{
-    display:none;
-}
+  /* =========================
+     BASE LAYOUT
+  ========================= */
 
-
-@media (max-width: 700px){
-
-  .archive-layout {
+  html,
+  body {
     height: auto;
-    min-height: 100vh;
     overflow-y: auto;
   }
 
-  .column-content {
-    overflow: visible;
+  /* make archive scrollable page */
+  .archive-layout {
+    display: block;
+    height: auto;
+    min-height: 100vh;
+    padding-top: 50px; /* space for mobile nav */
   }
 
-}
-
-
-html,
-body{
-
-overflow-y: auto;
-   height:auto;
-
-}
-
-
-/* top navigation */
-
-.mobile-nav{
-
-    display:flex;
-
-    position:fixed;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:50px;
-
-    justify-content:space-around;
-    align-items:center;
-
-    background:var(--bg);
-
-    border-bottom:1px solid var(--line);
-
-    z-index:1000;
-
-}
-
-
-.mobile-nav button{
-
-    background:none;
-
-    border:none;
-
-    font-family:inherit;
-
-    font-size:12px;
-
-}
-
-
-/* archive container */
-
-.archive-layout{
-
-    display:block;
-
-    height:auto;
-
-    padding-top:50px;
-
-}
-
-
-
-/* hide all sections */
-
-.intro-panel,
-.archive-column,
-.case-panel{
-
-    display:none;
-
-}
-
-
-/* INFO */
-
-.archive-layout.show-info .intro-panel{
-
-    display:block;
-
-}
-
-
-/* ARTICLES */
-
-.archive-layout.show-articles .archive-column{
-
-    display:block;
-
-}
-
-
-.archive-layout.show-articles .archive-column:not(:first-of-type){
-
-    display:none;
-
-}
-
-
-/* DIALOGUE */
-
-.archive-layout.show-dialogue .case-panel{
-
-    display:block;
-
-}
-
-
-/* spacing */
-
-.intro-panel,
-.case-panel{
-
-    padding:70px 25px 25px;
-
-}
-
-
-
-
+  /* =========================
+     MOBILE NAV
+  ========================= */
+
+  .mobile-nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    z-index: 1000;
+  }
+
+  .mobile-nav button {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 12px;
+    color: inherit;
+  }
+
+  /* =========================
+     SECTIONS (DEFAULT HIDDEN)
+     controlled by JS classes
+  ========================= */
+
+  .intro-panel,
+  .archive-column,
+  .case-panel {
+    display: none;
+  }
+
+  /* =========================
+     VIEW: INFO
+  ========================= */
+
+  .archive-layout.show-info .intro-panel {
+    display: block;
+  }
+
+  /* =========================
+     VIEW: ARTICLES
+  ========================= */
+
+  .archive-layout.show-articles .archive-column {
+    display: block;
+  }
+
+  /* show only first column (optional behavior like your current setup) */
+  .archive-layout.show-articles .archive-column:nth-of-type(n+2) {
+    display: none;
+  }
+
+  .archive-layout.show-articles .archive-column {
+    padding: 15px;
+  }
+
+  /* allow scrolling inside column content */
+  .column-content {
+    height: auto;
+    overflow: visible;
+    padding: 15px;
+  }
+
+  /* =========================
+     VIEW: DIALOGUE
+  ========================= */
+
+  .archive-layout.show-dialogue .case-panel {
+    display: block;
+  }
+
+  .case-panel {
+    padding: 70px 15px 15px;
+  }
+
+  /* =========================
+     ARTICLE VIEW (MOBILE OVERRIDE)
+  ========================= */
+
+  .article-view {
+    grid-template-columns: 1fr;
+    display: block;
+    overflow-y: auto;
+  }
+
+  .article-image-panel {
+    height: auto;
+  }
+
+  .article-content {
+    padding: 20px;
+  }
+
+  .article-content h2 {
+    font-size: 28px;
+  }
+
+  /* =========================
+     CARDS
+  ========================= */
+
+  .article-card {
+    margin-bottom: 20px;
+  }
+
+  .article-title {
+    font-size: 14px;
+  }
+
+  .article-excerpt {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  /* =========================
+     INTRO PANEL
+  ========================= */
+
+  .intro-panel {
+    padding: 70px 15px 15px;
+  }
+
+  .intro-panel h1 {
+    font-size: 36px;
+  }
+
+  .description {
+    max-width: 100%;
+  }
+
+  /* =========================
+     SCROLL BEHAVIOR FIX
+  ========================= */
+
+  .archive-column {
+    height: auto;
+    overflow: visible;
+  }
 
 }

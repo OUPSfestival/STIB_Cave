@@ -390,26 +390,24 @@ object-fit:contain;
 
 
 
-
 .dialogue-panel{
 
     margin-top:60px;
 
-    padding-top:40px;
+    padding-top:30px;
 
     border-top:3px solid #111;
 
 }
 
 
-
 .dialogue-panel h2{
 
-    font-size:20px;
+    font-size:16px;
 
     font-weight:600;
 
-    margin-bottom:30px;
+    margin-bottom:25px;
 
 }
 

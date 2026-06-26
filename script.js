@@ -124,8 +124,10 @@ ${article.excerpt}
 `;
 
 
-card.onclick=()=>openArticle(article);
-
+card.onclick=function(){
+  console.log("CLICKED", article);
+  openArticle(article);
+};
 
 return card;
 

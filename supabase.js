@@ -7,6 +7,8 @@ const supabaseClient = supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
+
+
 async function testSupabase(){
 
 const {data,error}=await supabaseClient
@@ -14,8 +16,9 @@ const {data,error}=await supabaseClient
 .select("*");
 
 
-console.log(data);
-console.log(error);
+console.log("DATA:",data);
+
+console.log("ERROR:",error);
 
 }
 

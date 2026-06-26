@@ -1,3 +1,7 @@
+// OUPS ARCHIVE EDITOR
+// Cloudflare API connection
+
+
 const API =
 "https://cave-api.manuelbischof-phil.workers.dev/api/articles";
 
@@ -8,28 +12,43 @@ let currentArticle = null;
 
 
 
-// Load articles from Cloudflare
+// ------------------------------------
+// LOAD ARTICLES FROM DATABASE
+// ------------------------------------
 
 async function loadArticles(){
 
 
-    const response =
-    await fetch(API);
+    try {
+
+        const response = await fetch(API);
+
+        articles = await response.json();
 
 
-    articles =
-    await response.json();
+        renderArticleList();
 
 
-    renderArticleList();
+    }
+
+    catch(error){
+
+        console.error(
+            "Could not load articles:",
+            error
+        );
+
+    }
+
 
 }
 
 
 
 
-
-// Create left column
+// ------------------------------------
+// LEFT COLUMN ARTICLE LIST
+// ------------------------------------
 
 function renderArticleList(){
 
@@ -40,40 +59,46 @@ function renderArticleList(){
     );
 
 
-    container.innerHTML="";
+    container.innerHTML = "";
 
 
-    articles.forEach(article=>{
+
+    articles.forEach(article => {
 
 
         const item =
         document.createElement("div");
 
 
-        item.className="article-item";
+        item.className =
+        "article-item";
 
 
-        item.innerHTML=`
 
-        <strong>
-        ${article.title || "Untitled"}
-        </strong>
+        item.innerHTML = `
 
-        <small>
-        ${article.category || "No category"}
-        </small>
+            <strong>
+                ${article.title || "Untitled"}
+            </strong>
+
+            <small>
+                ${article.category || ""}
+            </small>
 
         `;
 
 
-        item.onclick=()=>{
+
+        item.onclick = function(){
 
             openArticle(article);
 
         };
 
 
+
         container.appendChild(item);
+
 
 
     });
@@ -85,7 +110,10 @@ function renderArticleList(){
 
 
 
-// Load article into form
+
+// ------------------------------------
+// OPEN ARTICLE
+// ------------------------------------
 
 function openArticle(article){
 
@@ -93,38 +121,62 @@ function openArticle(article){
     currentArticle = article;
 
 
-    document.getElementById("article-id").value =
-    article.id;
+
+    document
+    .getElementById("article-id")
+    .value =
+    article.id || "";
 
 
-    document.getElementById("title").value =
+
+    document
+    .getElementById("title")
+    .value =
     article.title || "";
 
 
-    document.getElementById("category").value =
+
+    document
+    .getElementById("category")
+    .value =
     article.category || "";
 
 
-    document.getElementById("excerpt").value =
+
+    document
+    .getElementById("excerpt")
+    .value =
     article.excerpt || "";
 
 
-    document.getElementById("body").value =
+
+    document
+    .getElementById("body")
+    .value =
     article.content || "";
 
 
-    document.getElementById("image").value =
+
+    document
+    .getElementById("image")
+    .value =
     article.image || "";
 
 
-    document.getElementById("credits").value =
+
+    document
+    .getElementById("credits")
+    .value =
     article.credits || "";
 
 
-    displayTags(article.tags);
+
+    showTags(article.tags);
 
 
-    updateImagePreview(article.image);
+    updatePreview(article.image);
+
+
 
 }
 
@@ -132,76 +184,108 @@ function openArticle(article){
 
 
 
-// Tags
 
-function displayTags(tags){
+
+// ------------------------------------
+// TAG DISPLAY
+// ------------------------------------
+
+function showTags(tags){
 
 
     const box =
     document.getElementById("tags");
 
 
-    box.innerHTML="";
+    box.innerHTML = "";
 
 
-    if(!tags)
-    return;
 
+    if(!tags){
 
-    let list = tags;
-
-
-    if(typeof tags === "string"){
-
-        list = JSON.parse(tags);
+        return;
 
     }
 
 
 
-    list.forEach(tag=>{
+    let tagArray = tags;
 
 
-        let span =
+
+    if(typeof tags === "string"){
+
+        try{
+
+            tagArray =
+            JSON.parse(tags);
+
+        }
+
+        catch{
+
+            tagArray =
+            tags.split(",");
+
+        }
+
+    }
+
+
+
+
+    tagArray.forEach(tag => {
+
+
+        const element =
         document.createElement("span");
 
 
-        span.innerHTML =
-        tag + " ×";
+        element.textContent =
+        tag;
 
 
-        box.appendChild(span);
+        box.appendChild(element);
 
 
     });
 
 
+
 }
 
 
 
 
 
-// Image preview
-
-function updateImagePreview(src){
 
 
-    const img =
+// ------------------------------------
+// IMAGE PREVIEW
+// ------------------------------------
+
+function updatePreview(image){
+
+
+    const preview =
     document.getElementById("preview");
 
 
-    if(src){
 
-        img.src=src;
+    if(image){
+
+        preview.src = image;
 
     }
 
     else{
 
-        img.removeAttribute("src");
+        preview.removeAttribute(
+            "src"
+        );
 
     }
+
 
 
 }
@@ -209,9 +293,27 @@ function updateImagePreview(src){
 
 
 
+// update image preview when typing path
+
+document
+.getElementById("image")
+.addEventListener(
+"input",
+function(){
+
+    updatePreview(this.value);
+
+});
 
 
-// Save article
+
+
+
+
+
+// ------------------------------------
+// SAVE ARTICLE
+// ------------------------------------
 
 async function saveArticle(){
 
@@ -219,7 +321,7 @@ async function saveArticle(){
     if(!currentArticle){
 
         alert(
-        "Select an article first"
+        "Please select an article first"
         );
 
         return;
@@ -261,43 +363,71 @@ async function saveArticle(){
 
 
 
-    const response =
-    await fetch(
-        `${API}/${currentArticle.id}`,
-        {
+    try{
 
-        method:"PUT",
 
-        headers:{
-            "Content-Type":"application/json"
-        },
+        const response =
+        await fetch(
+            `${API}/${currentArticle.id}`,
+            {
 
-        body:
-        JSON.stringify(updatedArticle)
+                method:"PUT",
+
+                headers:{
+
+                    "Content-Type":
+                    "application/json"
+
+                },
+
+                body:
+                JSON.stringify(updatedArticle)
+
+            }
+        );
+
+
+
+        if(response.ok){
+
+
+            alert(
+            "Article saved"
+            );
+
+
+            loadArticles();
+
 
         }
-    );
+
+        else{
 
 
-
-    if(response.ok){
-
-        alert(
-        "Article saved"
-        );
+            alert(
+            "Save failed"
+            );
 
 
-        loadArticles();
+        }
+
 
     }
 
-    else{
+
+    catch(error){
+
+
+        console.error(error);
+
 
         alert(
-        "Save failed"
+        "Connection error"
         );
 
+
     }
+
 
 
 }
@@ -306,13 +436,21 @@ async function saveArticle(){
 
 
 
+
+// SAVE BUTTON
+
 document
 .querySelector(".save-button")
-.onclick =
-saveArticle;
+.addEventListener(
+"click",
+saveArticle
+);
 
 
 
 
+
+
+// START
 
 loadArticles();

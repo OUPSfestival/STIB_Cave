@@ -166,15 +166,14 @@ function openArticle(article){
      console.log("OPEN ARTICLE WORKS", article);
 
  document
-.getElementById("archiveLayout")
-.style.display = "none";
+ .getElementById("archiveLayout")
+ .classList.add("hidden");
+
 
  document
-.getElementById("articleView")
-.classList.remove("hidden");
-document
-.getElementById("articleView")
-.style.display = "grid";
+ .getElementById("articleView")
+ .classList.remove("hidden");
+
 
 
   document.getElementById("articleTitle").textContent =
@@ -237,10 +236,13 @@ document
   .getElementById("archiveLayout")
   .classList.remove("hidden");
 
+
 });
 
 
-// TAG SYSTEM
+
+
+
 
 
 // TAG SYSTEM

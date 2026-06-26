@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upload Articles</title>
+</head>
+
+<body>
+
+<h1>Uploading articles...</h1>
+
+<script src="supabase.js"></script>
+<script src="articles.js"></script>
+
+<script>
+
+async function uploadArticles(){
+
+for(const article of articles){
+
+
+const {data,error}=await supabaseClient
+.from("articles")
+.insert({
+
+id: article.id,
+title: article.title,
+category: article.category,
+image: article.image,
+credits: article.credits,
+excerpt: article.excerpt,
+body: article.body,
+tags: article.tags
+
+});
+
+
+if(error){
+
+console.log(
+"ERROR:",
+article.id,
+error
+);
+
+}
+
+else{
+
+console.log(
+"UPLOADED:",
+article.id
+);
+
+}
+
+
+}
+
+
+alert("Upload finished");
+
+
+}
+
+
+uploadArticles();
+
+
+</script>
+
+</body>
+</html>

@@ -331,7 +331,7 @@ grid-template-columns:
 1fr
 1fr;
 background:var(--bg) !important;
-z-index:10;
+z-index:9999;
 }
 
 

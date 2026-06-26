@@ -384,7 +384,7 @@ console.log("ID:", currentArticle.id);
 const { data, error } = await supabaseClient
 .from("articles")
 .update(updatedArticle)
-.eq("id", currentArticle.id)
+.eq("id", 5)
 .select();
     
 

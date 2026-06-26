@@ -378,7 +378,9 @@ const updatedArticle = {
 
 };
 
-
+console.log("CURRENT ARTICLE:", currentArticle);
+console.log("ID:", currentArticle.id);
+    
 const { data, error } = await supabaseClient
 .from("articles")
 .update(updatedArticle)

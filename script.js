@@ -376,3 +376,6 @@ layout.classList.add(
 
 
 }
+document.addEventListener("DOMContentLoaded", () => {
+  mobileView("articles");
+});

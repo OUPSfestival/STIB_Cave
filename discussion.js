@@ -135,7 +135,7 @@ comments.forEach(comment=>{
 
 list.innerHTML += `
 
-<div class="dialogue-comment">
+<div class="dialogue-comment" data-id="${comment.id}">
 
 
 <strong>
@@ -149,8 +149,24 @@ ${comment.content}
 
 
 <small>
-Archive dialogue · ${comment.created_at}
+${comment.created_at}
 </small>
+
+
+<button 
+class="reply-button"
+onclick="openReply(${comment.id})">
+
+Reply
+
+</button>
+
+
+<div 
+id="reply-${comment.id}"
+class="reply-box">
+
+</div>
 
 
 </div>

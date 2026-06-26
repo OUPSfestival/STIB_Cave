@@ -23,10 +23,11 @@ async function loadArticles(){
 
         const response = await fetch(API);
 
-        articles = await response.json();
+       articles = await response.json();
 
+       console.log("LOADED ARTICLES:", articles);
 
-        renderArticleList();
+    renderArticleList();
 
 
     }

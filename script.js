@@ -199,7 +199,9 @@ document
 
   document.getElementById("articleBody").innerHTML =
     article.body;
-
+    
+console.log("TITLE ELEMENT:", document.getElementById("articleTitle").innerHTML);
+console.log("VIEW CLASS:", document.getElementById("articleView").className);
 
 }
 

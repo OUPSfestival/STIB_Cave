@@ -351,75 +351,63 @@ function(){
 
 async function saveArticle(){
 
-if(!currentArticle){
-    alert("No article selected");
-    return;
+    if(!currentArticle){
+        alert("No article selected");
+        return;
+    }
+
+    const updatedArticle = {
+
+        title: document.getElementById("title").value,
+        category: document.getElementById("category").value,
+        excerpt: document.getElementById("excerpt").value,
+        body: document.getElementById("body").value,
+        image: document.getElementById("image").value,
+        credits: document.getElementById("credits").value,
+
+        publishing_date: document.getElementById("publishing-date").value,
+        publishing_location: document.getElementById("publishing-location").value,
+        publisher: document.getElementById("publisher").value,
+
+        infos: document.getElementById("infos").value,
+        object_material: document.getElementById("object-material").value,
+        object_technique: document.getElementById("object-technique").value,
+        sources: document.getElementById("sources").value,
+        image_info: document.getElementById("image-info").value
+
+    };
+
+
+    console.log("CURRENT ARTICLE:", currentArticle);
+    console.log("ID:", currentArticle.id);
+    console.log("UPDATE DATA:", updatedArticle);
+
+
+    const { data, error } = await supabase
+        .from("articles")
+        .update(updatedArticle)
+        .eq("id", currentArticle.id)
+        .select();
+
+
+    console.log("UPDATED:", data);
+    console.log("ERROR:", error);
+
+
+    if(error){
+
+        console.error(error);
+        alert("Save error");
+        return;
+
+    }
+
+
+    alert("Article saved");
+
+    loadArticles();
+
 }
-
-
-const updatedArticle = {
-
-    title: document.getElementById("title").value,
-    category: document.getElementById("category").value,
-    excerpt: document.getElementById("excerpt").value,
-    body: document.getElementById("body").value,
-    image: document.getElementById("image").value,
-    credits: document.getElementById("credits").value,
-
-    publishing_date: document.getElementById("publishing-date").value,
-    publishing_location: document.getElementById("publishing-location").value,
-    publisher: document.getElementById("publisher").value,
-
-    infos: document.getElementById("infos").value,
-    object_material: document.getElementById("object-material").value,
-    object_technique: document.getElementById("object-technique").value,
-    sources: document.getElementById("sources").value,
-    image_info: document.getElementById("image-info").value
-
-};
-
-console.log("CURRENT ARTICLE:", currentArticle);
-console.log("ID:", currentArticle.id);
-    
-cconst { data, error } = await supabase
-  .from("articles")
-    console.log("UPDATE DATA:", updateData);
-  .update(updateData)
-  .eq("id", currentArticle.id)
-  .select();
-
-console.log("UPDATED:", data);
-console.log("ERROR:", error);
-
-if(error){
-
-console.error(error);
-alert("Save error");
-
-return;
-
-}
-
-
-alert("Article saved");
-
-loadArticles();
-
-}
-
-
-
-
-
-// SAVE BUTTON
-
-document
-.querySelector(".save-button")
-.addEventListener(
-"click",
-saveArticle
-);
-
 
 // ------------------------------------
 // NEW ARTICLE

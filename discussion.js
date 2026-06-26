@@ -162,8 +162,7 @@ Archive dialogue · ${comment.created_at}
 
 
 
-container.prepend(list);
-
+container.appendChild(list);
 
 }
 

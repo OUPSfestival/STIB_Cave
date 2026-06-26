@@ -387,6 +387,33 @@ object-fit:contain;
 
 
 
+
+
+
+
+.dialogue-panel{
+
+    margin-top:60px;
+
+    padding-top:40px;
+
+    border-top:3px solid #111;
+
+}
+
+
+
+.dialogue-panel h2{
+
+    font-size:20px;
+
+    font-weight:600;
+
+    margin-bottom:30px;
+
+}
+
+
 @media(max-width:800px){
 
 .layout{

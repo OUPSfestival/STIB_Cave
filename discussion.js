@@ -137,19 +137,21 @@ list.innerHTML += `
 
 <div class="dialogue-comment">
 
+
 <strong>
-${comment.author}
+${comment.author} on ${comment.article_id}
 </strong>
+
 
 <p>
 ${comment.content}
 </p>
 
+
 <small>
-${comment.created_at}
+Archive dialogue · ${comment.created_at}
 </small>
 
-<hr>
 
 </div>
 

@@ -2,10 +2,11 @@ const API =
 "https://cave-api.manuelbischof-phil.workers.dev/api/articles";
 
 
-const articleList = document.getElementById("articleList");
-
 let articles = [];
-let currentArticle = null;
+
+
+const articleList =
+document.getElementById("articleList");
 
 
 
@@ -15,78 +16,44 @@ async function loadArticles(){
 
     articles = await response.json();
 
-    renderList();
+    console.log(articles);
+
+    showArticles();
 
 }
 
 
 
-function renderList(){
+function showArticles(){
 
-    articleList.innerHTML = "";
+    articleList.innerHTML="";
 
-    articles.forEach(article => {
 
-        const item = document.createElement("div");
+    articles.forEach(article=>{
 
-        item.className = "article";
 
-        item.innerHTML = `
-            <strong>${article.title}</strong>
-            <br>
-            <small>${article.category || "No category"}</small>
+        const item=document.createElement("div");
+
+
+        item.className="article";
+
+
+        item.innerHTML=`
+
+            <h3>${article.title}</h3>
+
+            <p>${article.category || ""}</p>
+
         `;
-
-
-        item.onclick = () => openArticle(article);
 
 
         articleList.appendChild(item);
 
+
     });
 
-}
-
-
-
-function openArticle(article){
-
-    currentArticle = article;
-
-
-    document.getElementById("title").value =
-    article.title || "";
-
-
-    document.getElementById("category").value =
-    article.category || "";
-
-
-    document.getElementById("tags").value =
-    article.tags || "";
-
-
-    document.getElementById("excerpt").value =
-    article.excerpt || "";
-
-
-    document.getElementById("content").value =
-    article.content || "";
 
 }
-
-
-
-document
-.getElementById("newArticle")
-.onclick = () => {
-
-    currentArticle = null;
-
-    document.querySelectorAll("input, textarea")
-    .forEach(field => field.value = "");
-
-};
 
 
 

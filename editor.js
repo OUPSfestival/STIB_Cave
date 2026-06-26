@@ -396,10 +396,12 @@ if (!hasChanges) {
 }
 
 const { data, error } = await supabaseClient
-    .from("articles")
-    .update(updatedArticle)
-    .eq("id", currentArticle.id)
-    .select();
+  .from("articles")
+  .update({
+    infos: "55"
+  })
+  .eq("id", currentArticle.id)
+  .select();
 
 console.log("UPDATED:", data);
 console.log("ERROR:", error);

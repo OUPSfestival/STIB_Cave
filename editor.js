@@ -397,9 +397,7 @@ if (!hasChanges) {
 
 const { data, error } = await supabaseClient
   .from("articles")
-  .update({
-    infos: "55"
-  })
+  .update(updatedArticle)
   .eq("id", currentArticle.id)
   .select();
 

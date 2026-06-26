@@ -669,7 +669,46 @@ filter:grayscale(0%);
 
 }
 
+.reply-button{
 
+background:none;
+
+border:none;
+
+font-size:10px;
+
+cursor:pointer;
+
+padding:0;
+
+margin-top:10px;
+
+}
+
+
+
+.reply-box{
+
+margin-top:15px;
+
+margin-left:15px;
+
+}
+
+
+
+.reply-box textarea,
+.reply-box input{
+
+width:100%;
+
+font-family:inherit;
+
+font-size:11px;
+
+margin-bottom:8px;
+
+}
 
 
 /* =====================================

@@ -359,16 +359,16 @@ function(){
 async function saveArticle(){
 
 
-    if(!currentArticle){
+let url = API;
+let method = "POST";
 
-        alert(
-        "Please select an article first"
-        );
 
-        return;
+if(currentArticle){
 
-    }
+    url = `${API}/${currentArticle.id}`;
+    method = "PUT";
 
+}
 
 
     const updatedArticle = {
@@ -440,12 +440,11 @@ async function saveArticle(){
 
 
         const response =
-        await fetch(
-            `${API}/${currentArticle.id}`,
-            {
+       await fetch(
+    url,
+    {
 
-                method:"PUT",
-
+        method:method,
                 headers:{
 
                     "Content-Type":

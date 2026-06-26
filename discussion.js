@@ -99,3 +99,71 @@ document.getElementById(
 
 
 });
+// ==============================
+// LOAD PUBLIC DIALOGUE
+// ==============================
+
+async function loadDialogue(){
+
+
+const response =
+await fetch(
+`${API_URL}/api/contributions`
+);
+
+
+const comments =
+await response.json();
+
+
+
+const container =
+document.getElementById(
+"publicDialogue"
+);
+
+
+
+const list =
+document.createElement("div");
+
+list.id = "dialogueList";
+
+
+comments.forEach(comment=>{
+
+
+list.innerHTML += `
+
+<div class="dialogue-comment">
+
+<strong>
+${comment.author}
+</strong>
+
+<p>
+${comment.content}
+</p>
+
+<small>
+${comment.created_at}
+</small>
+
+<hr>
+
+</div>
+
+`;
+
+
+});
+
+
+
+container.prepend(list);
+
+
+}
+
+
+loadDialogue();

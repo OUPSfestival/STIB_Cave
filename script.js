@@ -2,6 +2,8 @@ var articles = [];
 
 async function loadArticles() {
 
+    console.log(article);
+
     const { data, error } = await supabaseClient
         .from("articles")
         .select("*");

@@ -493,9 +493,8 @@ if(currentArticle){
         console.error(error);
 
 
-        alert(
-        "Connection error"
-        );
+        console.error("SAVE ERROR:", error);
+        alert("Connection error");
 
 
     }

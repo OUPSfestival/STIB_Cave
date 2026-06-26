@@ -830,7 +830,19 @@ margin-bottom:8px;
 }
 
 
-@media(max-width:900px){
+@media (max-width: 700px){
+
+  .archive-layout {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .column-content {
+    overflow: visible;
+  }
+
+}
 
 
 html,
@@ -950,13 +962,7 @@ overflow-y: auto;
 }
 
 
-.column-content{
 
-    height:auto;
-
-    overflow:visible;
-
-}
 
 
 }

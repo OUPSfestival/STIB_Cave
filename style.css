@@ -357,13 +357,98 @@ filter:grayscale(0%);
    DIALOGUE
 ===================================== */
 
-
-.dialogue-intro{
-    font-size: 12px;
-    line-height: 1.5;
-    color: #666;
-    margin-bottom: 20px;
+.your-contribution{
+    margin-bottom:30px;
 }
+
+
+.your-contribution h5{
+    font-size:12px;
+    font-weight:500;
+}
+
+
+.contribution-box{
+
+    display:none;
+
+    margin-top:15px;
+
+    padding:15px;
+
+    border:1px solid #ddd;
+
+}
+
+
+.your-contribution:hover .contribution-box{
+
+    display:block;
+
+}
+
+
+
+.contribution-box input,
+.contribution-box textarea{
+
+    width:100%;
+
+    font-family:inherit;
+
+    font-size:12px;
+
+    margin-bottom:10px;
+
+}
+
+
+.contribution-box textarea{
+
+    height:100px;
+
+}
+
+
+
+.dialogue-comment{
+
+    margin-top:25px;
+
+}
+
+
+
+.dialogue-comment strong{
+
+    font-size:12px;
+
+    font-weight:500;
+
+}
+
+
+
+.dialogue-comment p{
+
+    font-size:13px;
+
+    line-height:1.5;
+
+    margin:8px 0;
+
+}
+
+
+
+.dialogue-comment small{
+
+    font-size:10px;
+
+    opacity:0.6;
+
+}
+
 
 
 

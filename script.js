@@ -167,6 +167,8 @@ function openArticle(article){
   document.getElementById("articleBody").textContent =
     article.body;
 
+  loadDiscussion(article.id);
+
 }
 
 

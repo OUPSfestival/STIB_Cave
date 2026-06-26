@@ -352,6 +352,24 @@ filter:grayscale(0%);
 filter:grayscale(0%);
 }
 
+
+/* =====================================
+   DIALOGUE
+===================================== */
+
+
+.dialogue-intro{
+    font-size: 12px;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
 /* =====================================
    AUTOMATIC DARK MODE
 ===================================== */

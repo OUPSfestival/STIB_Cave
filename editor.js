@@ -120,7 +120,7 @@ function renderArticleList(){
 
 function openArticle(article){
 
-
+console.log("OPEN ARTICLE", article);
     currentArticle = article;
 
 

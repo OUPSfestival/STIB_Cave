@@ -146,10 +146,9 @@ function openArticle(article){
 
 
     document
-    .getElementById("body")
-    .value =
-    article.content || "";
-
+.getElementById("body")
+.value =
+article.body || "";
 
 
     document

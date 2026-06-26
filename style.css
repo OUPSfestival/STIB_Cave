@@ -836,8 +836,8 @@ margin-bottom:8px;
 html,
 body{
 
-    overflow:auto;
-    height:auto;
+overflow-y: auto;
+   height:auto;
 
 }
 

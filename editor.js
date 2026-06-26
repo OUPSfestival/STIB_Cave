@@ -384,9 +384,10 @@ const { data, error } = await supabaseClient
 .update(updatedArticle)
 .eq("id", currentArticle.id)
 .select();
+    
 
-console.log("SAVE RESULT:", data);
-console.log("SAVE ERROR:", error);
+console.log("UPDATED:", data);
+console.log("ERROR:", error);
 
 if(error){
 

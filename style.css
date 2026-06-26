@@ -821,14 +821,15 @@ margin-bottom:8px;
 
 
 
-/* =====================================
+/* =========================
    MOBILE VERSION
-===================================== */
+========================= */
+
 @media (max-width: 700px) {
 
-  /* =========================
-     BASE LAYOUT
-  ========================= */
+  /* -------------------------
+     BASE RESET
+  ------------------------- */
 
   html,
   body {
@@ -836,7 +837,7 @@ margin-bottom:8px;
     overflow-y: auto;
   }
 
-  /* make archive scrollable page */
+  /* switch layout from grid → vertical flow */
   .archive-layout {
     display: block;
     height: auto;
@@ -844,9 +845,9 @@ margin-bottom:8px;
     padding-top: 50px; /* space for mobile nav */
   }
 
-  /* =========================
+  /* -------------------------
      MOBILE NAV
-  ========================= */
+  ------------------------- */
 
   .mobile-nav {
     display: flex;
@@ -870,11 +871,11 @@ margin-bottom:8px;
     color: inherit;
   }
 
-  /* =========================
-     SECTIONS (DEFAULT HIDDEN)
-     controlled by JS classes
-  ========================= */
+  /* -------------------------
+     VIEW SYSTEM (JS CONTROLLED)
+  ------------------------- */
 
+  /* hide everything by default on mobile */
   .intro-panel,
   .archive-column,
   .case-panel {
@@ -882,75 +883,47 @@ margin-bottom:8px;
   }
 
   /* =========================
-     VIEW: INFO
+     INFO VIEW
   ========================= */
 
   .archive-layout.show-info .intro-panel {
     display: block;
-  }
-
-  /* =========================
-     VIEW: ARTICLES
-  ========================= */
-
-  .archive-layout.show-articles .archive-column {
-    display: block;
-  }
-
-  /* show only first column (optional behavior like your current setup) */
-  .archive-layout.show-articles .archive-column:nth-of-type(n+2) {
-    display: none;
-  }
-
-  .archive-layout.show-articles .archive-column {
-    padding: 15px;
-  }
-
-  /* allow scrolling inside column content */
-  .column-content {
-    height: auto;
-    overflow: visible;
-    padding: 15px;
-  }
-
-  /* =========================
-     VIEW: DIALOGUE
-  ========================= */
-
-  .archive-layout.show-dialogue .case-panel {
-    display: block;
-  }
-
-  .case-panel {
     padding: 70px 15px 15px;
   }
 
+  .intro-panel h1 {
+    font-size: 36px;
+  }
+
+  .description {
+    max-width: 100%;
+  }
+
   /* =========================
-     ARTICLE VIEW (MOBILE OVERRIDE)
+     ARTICLES VIEW
+     (ALL COLUMNS STACKED)
   ========================= */
 
-  .article-view {
-    grid-template-columns: 1fr;
+  .archive-layout.show-articles .archive-column {
     display: block;
-    overflow-y: auto;
+    width: 100%;
+    border-left: none;
+    border-bottom: 1px solid var(--line);
+    padding: 15px;
   }
 
-  .article-image-panel {
+  .archive-layout.show-articles .column-content {
     height: auto;
+    overflow: visible;
+    padding: 10px 0;
   }
 
-  .article-content {
-    padding: 20px;
+  /* IMPORTANT: no column hiding */
+  .archive-layout.show-articles .archive-column:nth-of-type(n+2) {
+    display: block;
   }
 
-  .article-content h2 {
-    font-size: 28px;
-  }
-
-  /* =========================
-     CARDS
-  ========================= */
-
+  /* card tweaks */
   .article-card {
     margin-bottom: 20px;
   }
@@ -965,28 +938,34 @@ margin-bottom:8px;
   }
 
   /* =========================
-     INTRO PANEL
+     DIALOGUE VIEW
   ========================= */
 
-  .intro-panel {
+  .archive-layout.show-dialogue .case-panel {
+    display: block;
     padding: 70px 15px 15px;
   }
 
-  .intro-panel h1 {
-    font-size: 36px;
-  }
-
-  .description {
-    max-width: 100%;
-  }
-
   /* =========================
-     SCROLL BEHAVIOR FIX
+     ARTICLE VIEW (MOBILE)
   ========================= */
 
-  .archive-column {
+  .article-view {
+    display: block;
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+
+  .article-image-panel {
     height: auto;
-    overflow: visible;
+  }
+
+  .article-content {
+    padding: 20px;
+  }
+
+  .article-content h2 {
+    font-size: 28px;
   }
 
 }

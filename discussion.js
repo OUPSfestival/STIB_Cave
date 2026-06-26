@@ -1,134 +1,101 @@
-const API_URL = "https://cave-api.manuelbischof-phil.workers.dev";
+const API_URL =
+"https://cave-api.manuelbischof-phil.workers.dev";
 
-let currentArticleId = null;
 
-// ======================
-// Load discussion
-// ======================
 
-async function loadDiscussion(articleId) {
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
 
-    currentArticleId = articleId;
 
-    const response = await fetch(
-        `${API_URL}/api/contributions/${articleId}`
-    );
+const button =
+document.getElementById(
+"submitDialogue"
+);
 
-    const discussion = await response.json();
 
-    renderDiscussion(discussion);
 
-}
+button.addEventListener(
+"click",
+async ()=>{
 
-// ======================
-// Render discussion
-// ======================
 
-function renderDiscussion(items) {
+const articleTitle =
+document.getElementById(
+"dialogueArticle"
+).value;
 
-    const container = document.getElementById("discussionList");
 
-    container.innerHTML = "";
 
-    if (items.length === 0) {
+const name =
+document.getElementById(
+"dialogueName"
+).value;
 
-        container.innerHTML = `
-            <p>No public dialogue yet.</p>
-        `;
 
-        return;
 
-    }
+const comment =
+document.getElementById(
+"dialogueComment"
+).value;
 
-    items.forEach(item => {
 
-        // Only show top-level contributions for now
-        if (item.parent_id !== null) return;
 
-        const entry = document.createElement("div");
+if(
+!articleTitle ||
+!comment
+){
 
-        entry.className = "discussion-item";
+alert(
+"Please enter an article and comment"
+);
 
-        entry.innerHTML = `
-
-            <strong>${item.author}</strong>
-
-            <p>${item.content}</p>
-
-            <small>${item.created_at}</small>
-
-            <hr>
-
-        `;
-
-        container.appendChild(entry);
-
-    });
+return;
 
 }
 
-// ======================
-// Submit new contribution
-// ======================
 
-async function submitDiscussion() {
 
-    if (currentArticleId === null) return;
+await fetch(
+`${API_URL}/api/contributions`,
+{
 
-    const author = document
-        .getElementById("discussionAuthor")
-        .value
-        .trim();
+method:"POST",
 
-    const content = document
-        .getElementById("discussionContent")
-        .value
-        .trim();
+headers:{
+"Content-Type":"application/json"
+},
 
-    if (!content) {
+body:JSON.stringify({
 
-        alert("Please enter a contribution.");
+article_id: articleTitle,
 
-        return;
+parent_id:null,
 
-    }
+author:name || "Anonymous",
 
-    await fetch(`${API_URL}/api/contributions`, {
+content:comment
 
-        method: "POST",
-
-        headers: {
-            "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-
-            article_id: currentArticleId,
-
-            parent_id: null,
-
-            author: author || "Anonymous",
-
-            content: content
-
-        })
-
-    });
-
-    document.getElementById("discussionContent").value = "";
-
-    loadDiscussion(currentArticleId);
+})
 
 }
 
-// ======================
-// Button
-// ======================
+);
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    document
-        .getElementById("submitDiscussion")
-        .addEventListener("click", submitDiscussion);
+
+alert(
+"Comment published"
+);
+
+
+
+document.getElementById(
+"dialogueComment"
+).value="";
+
+
+});
+
 
 });

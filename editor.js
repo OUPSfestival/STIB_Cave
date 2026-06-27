@@ -404,6 +404,96 @@ async function saveArticle(){
 
 }
 
+
+// =========================
+// TAG SYSTEM (EDITOR)
+// =========================
+
+let selectedTags = [];
+
+// call this when editor loads OR articles are loaded
+function renderTagOptions(articles) {
+
+  const allTags = [
+    ...new Set(
+      (articles || []).flatMap(a => a.tags || [])
+    )
+  ];
+
+  const container = document.getElementById("tagContainer");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  allTags.forEach(tag => {
+
+    const el = document.createElement("span");
+    el.className = "tag-option";
+    el.textContent = tag;
+
+    if (selectedTags.includes(tag)) {
+      el.classList.add("active");
+    }
+
+    el.addEventListener("click", () => toggleTag(tag, el));
+
+    container.appendChild(el);
+
+  });
+
+}
+
+// toggle selection
+function toggleTag(tag, el) {
+
+  if (selectedTags.includes(tag)) {
+    selectedTags = selectedTags.filter(t => t !== tag);
+    el.classList.remove("active");
+  } else {
+    selectedTags.push(tag);
+    el.classList.add("active");
+  }
+
+  updateHiddenTags();
+}
+
+// update hidden input for Supabase
+function updateHiddenTags() {
+  const input = document.getElementById("tags");
+  if (!input) return;
+
+  input.value = JSON.stringify(selectedTags);
+}
+
+// add new tag manually
+document.addEventListener("DOMContentLoaded", () => {
+
+  const addBtn = document.getElementById("addTagBtn");
+  const input = document.getElementById("newTagInput");
+
+  if (addBtn && input) {
+
+    addBtn.addEventListener("click", () => {
+
+      const tag = input.value.trim();
+      if (!tag) return;
+
+      if (!selectedTags.includes(tag)) {
+        selectedTags.push(tag);
+      }
+
+      input.value = "";
+
+      updateHiddenTags();
+
+      // re-render to include new tag in list
+      renderTagOptions(window.articles || []);
+
+    });
+
+  }
+
+});
 // ------------------------------------
 // NEW ARTICLE
 // ------------------------------------

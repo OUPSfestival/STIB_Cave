@@ -391,7 +391,7 @@ display:inline-block;
   grid-column: 4 / 6;
   height: 100vh;
   overflow-y: auto;
-  padding: 80px;
+  padding: 20px;
 }
 
 
@@ -462,7 +462,11 @@ filter:grayscale(0%);
 }
 
 
+.your-contribution:hover .contribution-box{
 
+    display:block;
+
+}
 
 
 
@@ -570,7 +574,12 @@ filter:grayscale(0%);
 
 
 
+.contribution-trigger:hover + .contribution-box,
+.contribution-box:hover{
 
+    display:block;
+
+}
 
 
 

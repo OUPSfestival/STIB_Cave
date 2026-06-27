@@ -363,7 +363,12 @@ function scrollToColumn(target){
 
 
 
+const trigger = document.querySelector(".contribution-trigger");
+const box = document.querySelector(".contribution-box");
 
+trigger.addEventListener("click", () => {
+  box.style.display = box.style.display === "block" ? "none" : "block";
+});
 
 
 

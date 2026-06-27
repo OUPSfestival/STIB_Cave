@@ -427,7 +427,14 @@ object-fit:contain;
 }
 
 
-
+.tag-chip {
+    display: inline-block;
+    padding: 4px 8px;
+    margin: 3px;
+    border: 1px solid #b86b2b;
+    border-radius: 12px;
+    font-size: 11px;
+}
 
 
 

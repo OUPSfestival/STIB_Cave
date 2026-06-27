@@ -230,15 +230,15 @@ console.log("OPEN ARTICLE", article);
 
 function showTags(tags){
 
-    const box = document.getElementById("tagDisplay");
+    const box = document.getElementById("tags");
     box.innerHTML = "";
 
     if(!tags) return;
 
     let tagArray = tags;
 
-    if(typeof tags === "string"){
-        try{
+    if(typeof tags === "string") {
+        try {
             tagArray = JSON.parse(tags);
         } catch {
             tagArray = tags.split(",");
@@ -247,14 +247,12 @@ function showTags(tags){
 
     tagArray.forEach(tag => {
 
-        const el = document.createElement("span");
-        el.className = "article-tag";
-        el.textContent = tag;
+        const element = document.createElement("span");
+        element.className = "tag-chip";
+        element.textContent = tag;
 
-        box.appendChild(el);
-
+        box.appendChild(element);
     });
-
 }
 
 

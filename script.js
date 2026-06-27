@@ -176,29 +176,52 @@ function openArticle(article){
 
 
 
-  document.getElementById("articleTitle").textContent =
-    article.title;
+    document.getElementById("articleTitle").textContent =
+        article.title;
 
+    document.getElementById("articleCategory").textContent =
+        article.category;
 
-  document.getElementById("articleCategory").textContent =
-    article.category;
+    document.getElementById("articleExcerpt").textContent =
+        article.excerpt;
 
- document.getElementById("articleTags").innerHTML =
-  (article.tags || []).map(tag => 
-    `<span class="article-tag">${tag}</span>`
-  ).join(" ");
+    document.getElementById("articleBody").innerHTML =
+        article.body;
 
+    document.getElementById("articleTags").innerHTML =
+        (article.tags || []).map(tag =>
+            `<span class="article-tag">${tag}</span>`
+        ).join(" ");
 
-  document.getElementById("articleImage").src =
-    article.image;
+    document.getElementById("articlePublishingDate").textContent =
+        article.publishing_date;
 
+    document.getElementById("articlePublishingLocation").textContent =
+        article.publishing_location;
 
-  document.getElementById("articleCredits").textContent =
-    article.credits;
+    document.getElementById("articlePublisher").textContent =
+        article.publisher;
 
+    document.getElementById("articleInfos").textContent =
+        article.infos;
 
-  document.getElementById("articleBody").innerHTML =
-    article.body;
+    document.getElementById("articleObjectMaterial").textContent =
+        article.object_material;
+
+    document.getElementById("articleObjectTechnique").textContent =
+        article.object_technique;
+
+    document.getElementById("articleSources").textContent =
+        article.sources;
+
+    document.getElementById("articleImage").src =
+        article.image;
+
+    document.getElementById("articleCredits").textContent =
+        article.credits;
+
+    document.getElementById("articleImageInfo").textContent =
+        article.image_info;
     
 console.log("TITLE ELEMENT:", document.getElementById("articleTitle").innerHTML);
 console.log("VIEW CLASS:", document.getElementById("articleView").className);
@@ -206,11 +229,9 @@ console.log("VIEW CLASS:", document.getElementById("articleView").className);
 }
 
 
-// 6. BACK BUTTON <-- paste here
+// 6. CLOSE ARTICLE VIEW
 
-document
-.getElementById("backButton")
-.addEventListener("click", ()=>{
+function closeArticle(){
 
   document
   .getElementById("articleView")
@@ -221,23 +242,13 @@ document
   .getElementById("archiveLayout")
   .classList.remove("hidden");
 
-});
+}
 
+
+// close when clicking image
 document
 .getElementById("articleImage")
-.addEventListener("click", ()=>{
-
-  document
-  .getElementById("articleView")
-  .classList.add("hidden");
-
-
-  document
-  .getElementById("archiveLayout")
-  .classList.remove("hidden");
-
-
-});
+.addEventListener("click", closeArticle);
 
 
 

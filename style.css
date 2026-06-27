@@ -308,6 +308,10 @@ margin-top:8px;
 padding:25px;
 padding-top:90px;
 border-left:1px solid var(--line);
+height: 100vh;
+overflow-y: auto;
+display: flex;
+flex-direction: column;
 }
 
 .case-panel{
@@ -333,7 +337,7 @@ border-bottom:1px solid var(--line);
   grid-template-columns: 280px 1fr 1fr 1fr 280px;
   background: var(--bg);
   z-index: 9999;
-overflow: hidden;
+  overflow: hidden;
 
 }
 

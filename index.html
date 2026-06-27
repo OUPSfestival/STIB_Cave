@@ -198,39 +198,75 @@
 </div> <!-- closes archiveLayout -->
 
 
-<!-- ARTICLE VIEW -->
+
+  <!-- Article view -->
+
+
 
 <div id="articleView" class="article-view hidden">
 
-  <aside class="intro-panel">
+  <aside class="intro-panel"></aside>
 
-    <button id="backButton">
-      ← Archive
-    </button>
-
-  </aside>
-
+  <!-- IMAGE COLUMN -->
   <section class="article-image article-image-panel">
+
+  <div class="image-wrapper">
 
     <img id="articleImage">
 
-    <div id="articleCredits"></div>
+    <div class="article-media-info">
 
-  </section>
+      <p>
+        <strong>Credits:</strong>
+        <span id="articleCredits"></span>
+      </p>
 
+      <p>
+        <strong>Image Information:</strong>
+        <span id="articleImageInfo"></span>
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+     
+
+  <!-- TEXT COLUMN -->
   <section class="article-content">
 
-    <small id="articleCategory"></small>
+    <small>
+      <strong>Category:</strong>
+      <span id="articleCategory"></span>
+    </small>
 
     <h2 id="articleTitle"></h2>
 
     <div id="articleTags"></div>
 
+    <p>
+      <strong>Summary:</strong>
+      <span id="articleExcerpt"></span>
+    </p>
+
+    <div class="article-divider"></div>
+
     <div id="articleBody"></div>
+
+    <p><strong>Date:</strong> <span id="articlePublishingDate"></span></p>
+    <p><strong>Location:</strong> <span id="articlePublishingLocation"></span></p>
+    <p><strong>Publisher:</strong> <span id="articlePublisher"></span></p>
+
+    <p><strong>Infos:</strong> <span id="articleInfos"></span></p>
+    <p><strong>Material:</strong> <span id="articleObjectMaterial"></span></p>
+    <p><strong>Technique:</strong> <span id="articleObjectTechnique"></span></p>
+    <p><strong>Sources:</strong> <span id="articleSources"></span></p>
 
   </section>
 
-</div> <!-- closes articleView -->
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

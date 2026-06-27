@@ -42,7 +42,8 @@ async function loadArticles(){
 
     articles = data;
 
-    renderArticleList();
+renderArticleList();
+renderTagOptions(articles);
 
 }
 
@@ -146,9 +147,9 @@ console.log("OPEN ARTICLE", article);
 
 
     document
-.getElementById("body")
-.value =
-article.body || "";
+    .getElementById("body")
+    .value =
+    article.body || "";
 
 
     document

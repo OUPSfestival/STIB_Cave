@@ -363,7 +363,18 @@ function scrollToColumn(target){
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  const trigger = document.querySelector(".contribution-trigger");
+  const box = document.querySelector(".contribution-box");
 
+  trigger.addEventListener("click", () => {
+    if (box.style.display === "block") {
+      box.style.display = "none";
+    } else {
+      box.style.display = "block";
+    }
+  });
+});
 
 
 

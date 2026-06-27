@@ -124,7 +124,8 @@ function openArticle(article){
 console.log("OPEN ARTICLE", article);
     currentArticle = article;
 
-
+      selectedTags = [];
+    
     document
     .getElementById("title")
     .value =
@@ -204,17 +205,19 @@ console.log("OPEN ARTICLE", article);
     document.getElementById("image-info").value =
     article.image_info || "";
 
+    
 
+    // TAGS (load existing article tags into editor state)
+    selectedTags = Array.isArray(article.tags)
+    ? article.tags
+     : (article.tags ? JSON.parse(article.tags) : []);
+
+    updateHiddenTags();
+    renderTagOptions(articles);
 
     showTags(article.tags);
-
-
     updatePreview(article.image);
-
-
-
 }
-
 
 
 
@@ -227,65 +230,30 @@ console.log("OPEN ARTICLE", article);
 
 function showTags(tags){
 
-
-    const box =
-    document.getElementById("tags");
-
-
+    const box = document.getElementById("tagDisplay");
     box.innerHTML = "";
 
-
-
-    if(!tags){
-
-        return;
-
-    }
-
-
+    if(!tags) return;
 
     let tagArray = tags;
 
-
-
     if(typeof tags === "string"){
-
         try{
-
-            tagArray =
-            JSON.parse(tags);
-
+            tagArray = JSON.parse(tags);
+        } catch {
+            tagArray = tags.split(",");
         }
-
-        catch{
-
-            tagArray =
-            tags.split(",");
-
-        }
-
     }
-
-
-
 
     tagArray.forEach(tag => {
 
+        const el = document.createElement("span");
+        el.className = "article-tag";
+        el.textContent = tag;
 
-        const element =
-        document.createElement("span");
-
-
-        element.textContent =
-        tag;
-
-
-        box.appendChild(element);
-
+        box.appendChild(el);
 
     });
-
-
 
 }
 

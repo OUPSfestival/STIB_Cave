@@ -462,11 +462,7 @@ filter:grayscale(0%);
 }
 
 
-.your-contribution:hover .contribution-box{
 
-    display:block;
-
-}
 
 
 
@@ -574,12 +570,7 @@ filter:grayscale(0%);
 
 
 
-.contribution-trigger:hover + .contribution-box,
-.contribution-box:hover{
 
-    display:block;
-
-}
 
 
 

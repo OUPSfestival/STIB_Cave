@@ -351,14 +351,7 @@ function(){
 
 async function saveArticle(){
 
-    if(!currentArticle){
-        alert("No article selected");
-        return;
-    }
-    
-    console.log("SAVE ID:", currentArticle.id);
-
-    const updatedArticle = {
+    const articleData = {
 
         title: document.getElementById("title").value,
         category: document.getElementById("category").value,
@@ -376,45 +369,36 @@ async function saveArticle(){
         object_technique: document.getElementById("object-technique").value,
         sources: document.getElementById("sources").value,
         image_info: document.getElementById("image-info").value
-
     };
 
+    let result;
 
-    console.log("CURRENT ARTICLE:", currentArticle);
-    console.log("ID:", currentArticle.id);
-    console.log("UPDATE DATA:", updatedArticle);
+    if(currentArticle){
 
+        result = await supabaseClient
+            .from("articles")
+            .update(articleData)
+            .eq("id", currentArticle.id);
 
-console.log("UPDATE PAYLOAD:", updatedArticle);
+    }else{
 
-const hasChanges = Object.values(updatedArticle)
-    .some(v => v !== null && v !== undefined);
+        result = await supabaseClient
+            .from("articles")
+            .insert(articleData);
 
-if (!hasChanges) {
-    alert("Nothing changed");
-    return;
-}
+    }
 
-const { data, error } = await supabaseClient
-  .from("articles")
-  .update(updatedArticle)
-  .eq("id", currentArticle.id)
-  .select();
+    if(result.error){
 
-console.log("UPDATED:", data);
-console.log("ERROR:", error);
-
-
-    if(error){
-
-        console.error(error);
-        alert("Save error");
+        console.error(result.error);
+        alert("Save failed");
         return;
 
     }
 
-
     alert("Article saved");
+
+    currentArticle = null;
 
     loadArticles();
 
@@ -589,3 +573,8 @@ loadEditorComments();
 // start
 
 loadEditorComments();
+
+document
+    .querySelector(".save-button")
+    .addEventListener("click", saveArticle);
+    

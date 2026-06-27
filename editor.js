@@ -488,7 +488,7 @@ document.addEventListener("DOMContentLoaded", () => {
       updateHiddenTags();
 
       // re-render to include new tag in list
-      renderTagOptions(window.articles || []);
+      renderTagOptions(articles);
 
     });
 

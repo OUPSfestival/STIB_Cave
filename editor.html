@@ -76,7 +76,7 @@ Loading comments...
 
 <section>
 
-<h2>Article Information</h2>
+<h2>Teller</h2>
 
 
 <label>Title</label>
@@ -84,7 +84,9 @@ Loading comments...
 
 
 <label>Category</label>
-<input id="category">
+<select id="category">
+    <option value="">Select category...</option>
+</select>
 
 
 <label>Summary</label>
@@ -99,11 +101,9 @@ Loading comments...
 <div id="tagContainer" class="tag-container"></div>
 
 <input id="newTagInput" type="text" placeholder="Add new tag">
+
 <button type="button" id="addTagBtn">Add</button>
 
-<div id="tagDisplay"></div>
-
-<input type="hidden" id="tags">
 
   
 </section>
@@ -111,8 +111,6 @@ Loading comments...
 
 
 <section>
-
-<h2>Publication</h2>
 
 
 <label>Publishing Date</label>
@@ -132,8 +130,6 @@ Loading comments...
 
 
 <section>
-
-<h2>Object Description</h2>
 
 
 <label>Infos</label>
@@ -158,8 +154,6 @@ Loading comments...
 
 
 <section>
-
-<h2>Media</h2>
 
 <label>Image</label>
 <input id="image">
@@ -188,36 +182,10 @@ SAVE ARTICLE
 </section>
 
 
-<!-- PUBLIC DIALOGUE -->
-
-<section class="dialogue-panel">
-
-<h2>
-PUBLIC DIALOGUE
-</h2>
-
-
-<div id="editorComments">
-
-Loading comments...
-
-</div>
-
-
-</section>
-
-
-</section>
-
-
 </main>
 
 
-</section>
 
-
-  
-</main>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

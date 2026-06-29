@@ -14,8 +14,8 @@ async function loadArticles() {
 
    articles = data;
 
-createTagDropdowns();
-populateRandom();
+  createTagDropdowns();
+  populateRandom();
 }
 
 loadArticles();
@@ -66,14 +66,19 @@ searchInput.addEventListener("input", function(){
   });
 
 
-  filtered.forEach((article,index)=>{
+if (window.innerWidth < 700) {
 
-    columns[index % 3].appendChild(
-      createCard(article)
-    );
-
+  filtered.forEach(article => {
+    columns[0].appendChild(createCard(article));
   });
 
+} else {
+
+  filtered.forEach((article,index)=>{
+    columns[index % 3].appendChild(createCard(article));
+  });
+
+}
 
 });
 
@@ -144,15 +149,21 @@ function populateRandom(){
 
   const shuffled = shuffle(articles);
 
-  shuffled.forEach((article,index)=>{
+  if (window.innerWidth < 700) {
 
-    const target = columns[index % 3];
+    // Mobile: one long list
+    shuffled.forEach(article => {
+      columns[0].appendChild(createCard(article));
+    });
 
-    target.appendChild(
-      createCard(article)
-    );
+  } else {
 
-  });
+    // Desktop: keep existing layout
+    shuffled.forEach((article,index)=>{
+      columns[index % 3].appendChild(createCard(article));
+    });
+
+  }
 
 }
 
@@ -258,15 +269,16 @@ document
 
 // TAG SYSTEM
 
-const tagSelects = document.querySelectorAll(".tag-select");
-
+let tagSelects;
 function createTagDropdowns() {
+tagSelects = document.querySelectorAll(".tag-select");
+  
 
   const allTags = [
     ...new Set(
       articles.flatMap(article => article.tags)
     )
-  ];
+  ].sort();
 
   tagSelects.forEach(select => {
 
@@ -286,14 +298,25 @@ function createTagDropdowns() {
 
   });
 
+setTimeout(() => {
+
+  tagSelects[0].value = "cave";
+  tagSelects[1].value = "artefact";
+  tagSelects[2].value = "system";
+
+  tagSelects[0].dispatchEvent(new Event("change"));
+  tagSelects[1].dispatchEvent(new Event("change"));
+  tagSelects[2].dispatchEvent(new Event("change"));
+
+}, 100);
+    
 }
 
 
 
 // filter when changed
 
-tagSelects.forEach((select,index)=>{
-
+document.querySelectorAll(".tag-select").forEach((select,index)=>{
 
 select.addEventListener("change",()=>{
 
@@ -321,12 +344,11 @@ filtered = shuffle(articles);
 else{
 
 
-filtered = articles.filter(article=>
-
-article.tags.includes(selectedTag)
-
+filtered = shuffle(
+  articles.filter(article =>
+    article.tags.includes(selectedTag)
+  )
 );
-
 
 }
 

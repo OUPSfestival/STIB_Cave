@@ -1,28 +1,13 @@
 
-async function loadArticles(){
-
-    const { data, error } = await supabaseClient
-        .from("articles")
-        .select("*")
-        .order("title");
-
-    if(error){
-        console.error(error);
-        return;
-    }
-
-    articles = data;
-
-    renderArticleList();
-
-}
 
 
 let articles = [];
 
 let currentArticle = null;
 
+let selectedTags = [];
 
+let allTags = [];
 
 // ------------------------------------
 // LOAD ARTICLES FROM DATABASE
@@ -42,8 +27,11 @@ async function loadArticles(){
 
     articles = data;
 
-renderArticleList();
-renderTagOptions(articles);
+    buildTagLibrary();
+
+    renderArticleList();
+    renderCategoryOptions(articles);
+    renderTagList();
 
 }
 
@@ -121,10 +109,12 @@ function renderArticleList(){
 
 function openArticle(article){
 
-console.log("OPEN ARTICLE", article);
-    currentArticle = article;
+    console.log("OPEN ARTICLE START");
 
-      selectedTags = [];
+    currentArticle = article;
+    selectedTags = [...(article.tags || [])];
+    renderTagList();
+       
     
     document
     .getElementById("title")
@@ -160,10 +150,7 @@ console.log("OPEN ARTICLE", article);
 
 
 
-    document
-    .getElementById("credits")
-    .value =
-    article.credits || "";
+   
 
 
 
@@ -208,54 +195,34 @@ console.log("OPEN ARTICLE", article);
     
 
     // TAGS (load existing article tags into editor state)
-    selectedTags = Array.isArray(article.tags)
-    ? article.tags
-     : (article.tags ? JSON.parse(article.tags) : []);
+    console.log("article.tags =", article.tags);
+console.log("typeof =", typeof article.tags);
 
-    updateHiddenTags();
-    renderTagOptions(articles);
+if (Array.isArray(article.tags)) {
 
-    showTags(article.tags);
-    updatePreview(article.image);
-}
+    selectedTags = article.tags;
 
+} else if (typeof article.tags === "string") {
 
-
-
-
-
-// ------------------------------------
-// TAG DISPLAY
-// ------------------------------------
-
-function showTags(tags){
-
-    const box = document.getElementById("tags");
-    box.innerHTML = "";
-
-    if(!tags) return;
-
-    let tagArray = tags;
-
-    if(typeof tags === "string") {
-        try {
-            tagArray = JSON.parse(tags);
-        } catch {
-            tagArray = tags.split(",");
-        }
+    try {
+        selectedTags = JSON.parse(article.tags);
+    } catch {
+        selectedTags = article.tags.split(",");
     }
 
-    tagArray.forEach(tag => {
+} else {
 
-        const element = document.createElement("span");
-        element.className = "tag-chip";
-        element.textContent = tag;
+    selectedTags = [];
 
-        box.appendChild(element);
-    });
 }
 
+console.log("selectedTags =", selectedTags);
 
+    updatePreview(article.image);
+
+    console.log("OPEN ARTICLE END");
+
+}
 
 
 
@@ -324,8 +291,8 @@ async function saveArticle(){
         category: document.getElementById("category").value,
         excerpt: document.getElementById("excerpt").value,
         body: document.getElementById("body").value,
+        tags: selectedTags,
         image: document.getElementById("image").value,
-        credits: document.getElementById("credits").value,
 
         publishing_date: document.getElementById("publishing-date").value,
         publishing_location: document.getElementById("publishing-location").value,
@@ -372,95 +339,191 @@ async function saveArticle(){
 }
 
 
+
 // =========================
-// TAG SYSTEM (EDITOR)
+// categorey options
 // =========================
 
-let selectedTags = [];
 
-// call this when editor loads OR articles are loaded
-function renderTagOptions(articles) {
 
-  const allTags = [
-    ...new Set(
-      (articles || []).flatMap(a => a.tags || [])
-    )
-  ];
+function renderCategoryOptions(articles){
 
-  const container = document.getElementById("tagContainer");
-  if (!container) return;
+    const select = document.getElementById("category");
 
-  container.innerHTML = "";
+    if(!select) return;
 
-  allTags.forEach(tag => {
+    const categories = [
+        ...new Set(
+            (articles || [])
+                .map(article => article.category)
+                .filter(Boolean)
+        )
+    ].sort();
 
-    const el = document.createElement("span");
-    el.className = "tag-option";
-    el.textContent = tag;
+    select.innerHTML = `<option value="">Select category...</option>`;
 
-    if (selectedTags.includes(tag)) {
-      el.classList.add("active");
-    }
+    categories.forEach(category => {
 
-    el.addEventListener("click", () => toggleTag(tag, el));
+        const option = document.createElement("option");
 
-    container.appendChild(el);
+        option.value = category;
+        option.textContent = category;
 
-  });
-
-}
-
-// toggle selection
-function toggleTag(tag, el) {
-
-  if (selectedTags.includes(tag)) {
-    selectedTags = selectedTags.filter(t => t !== tag);
-    el.classList.remove("active");
-  } else {
-    selectedTags.push(tag);
-    el.classList.add("active");
-  }
-
-  updateHiddenTags();
-}
-
-// update hidden input for Supabase
-function updateHiddenTags() {
-  const input = document.getElementById("tags");
-  if (!input) return;
-
-  input.value = JSON.stringify(selectedTags);
-}
-
-// add new tag manually
-document.addEventListener("DOMContentLoaded", () => {
-
-  const addBtn = document.getElementById("addTagBtn");
-  const input = document.getElementById("newTagInput");
-
-  if (addBtn && input) {
-
-    addBtn.addEventListener("click", () => {
-
-      const tag = input.value.trim();
-      if (!tag) return;
-
-      if (!selectedTags.includes(tag)) {
-        selectedTags.push(tag);
-      }
-
-      input.value = "";
-
-      updateHiddenTags();
-
-      // re-render to include new tag in list
-      renderTagOptions(articles);
+        select.appendChild(option);
 
     });
 
-  }
+}
 
-});
+// =========================
+// TAG SYSTEM
+// =========================
+
+function buildTagLibrary() {
+
+    allTags = [];
+
+    articles.forEach(article => {
+
+        if (!Array.isArray(article.tags)) return;
+
+        article.tags.forEach(tag => {
+
+            if (!allTags.includes(tag)) {
+
+                allTags.push(tag);
+
+            }
+
+        });
+
+    });
+
+    allTags.sort();
+
+    console.log("allTags:", allTags);
+
+}
+
+function renderTagList() {
+
+    const container = document.getElementById("tagContainer");
+
+    container.innerHTML = "";
+
+    allTags.forEach(tag => {
+
+        const wrapper = document.createElement("span");
+
+        wrapper.className = "tag-option";
+
+
+        if (selectedTags.includes(tag)) {
+
+            wrapper.classList.add("active");
+
+        }
+
+
+        const text = document.createElement("span");
+
+        text.textContent = tag;
+
+
+        text.onclick = function(){
+
+            toggleTag(tag);
+
+        };
+
+
+        const deleteBtn = document.createElement("button");
+
+        deleteBtn.type = "button";
+
+        deleteBtn.textContent = "X";
+
+        deleteBtn.onclick = function(e){
+
+            e.stopPropagation();
+
+            deleteTag(tag);
+
+        };
+
+
+        wrapper.appendChild(text);
+
+        wrapper.appendChild(deleteBtn);
+
+
+        container.appendChild(wrapper);
+
+    });
+
+}
+
+function toggleTag(tag) {
+
+    if (selectedTags.includes(tag)) {
+
+        selectedTags = selectedTags.filter(t => t !== tag);
+
+    } else {
+
+        selectedTags.push(tag);
+
+    }
+
+    renderTagList();
+
+}
+
+async function deleteTag(tag) {
+
+    const confirmDelete = confirm(
+        "Delete tag '" + tag + "' from all articles?"
+    );
+
+    if (!confirmDelete) return;
+
+
+    for (const article of articles) {
+
+        if (Array.isArray(article.tags) && article.tags.includes(tag)) {
+
+            const newTags = article.tags.filter(t => t !== tag);
+
+
+            await supabaseClient
+                .from("articles")
+                .update({
+                    tags: newTags
+                })
+                .eq("id", article.id);
+
+        }
+
+    }
+
+
+    allTags = allTags.filter(t => t !== tag);
+
+    selectedTags = selectedTags.filter(t => t !== tag);
+
+
+    renderTagList();
+
+
+    await loadArticles();
+
+}
+
+
+
+
+
+
 // ------------------------------------
 // NEW ARTICLE
 // ------------------------------------
@@ -471,9 +534,16 @@ document
 "click",
 function(){
 
-    console.log("NEW ARTICLE CLICKED");
+console.log("NEW ARTICLE CLICKED");
 
 currentArticle = null;
+
+selectedTags = [];
+
+renderTagList();
+
+
+
 
 document.getElementById("title").value = "";
 
@@ -484,8 +554,6 @@ document.getElementById("excerpt").value = "";
 document.getElementById("body").value = "";
 
 document.getElementById("image").value = "";
-
-document.getElementById("credits").value = "";
 
 
 document.getElementById("publishing-date").value = "";
@@ -515,6 +583,47 @@ document.getElementById("title").focus();
 
 
 loadArticles();
+
+
+// =========================
+// ADD NEW TAG
+// =========================
+
+document
+.getElementById("addTagBtn")
+.addEventListener("click", function(){
+
+    const input = document.getElementById("newTagInput");
+
+    const tag = input.value.trim();
+
+    if (!tag) return;
+
+
+    if (!allTags.includes(tag)) {
+
+        allTags.push(tag);
+
+        allTags.sort();
+
+    }
+
+
+    if (!selectedTags.includes(tag)) {
+
+        selectedTags.push(tag);
+
+    }
+
+
+    input.value = "";
+
+    renderTagList();
+
+});
+
+
+
 
 
 // ==============================

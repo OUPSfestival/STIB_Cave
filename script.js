@@ -72,9 +72,19 @@ filtered.forEach((article, index) => {
 
 } else {
 
-  filtered.forEach((article,index)=>{
-    columns[index % 3].appendChild(createCard(article));
-  });
+if (window.innerWidth < 700) {
+
+    filtered.forEach(article => {
+        columns[0].appendChild(createCard(article));
+    });
+
+} else {
+
+    filtered.forEach((article,index)=>{
+        columns[index % 3].appendChild(createCard(article));
+    });
+
+}
 
 }
 

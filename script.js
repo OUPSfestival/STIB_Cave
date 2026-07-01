@@ -66,25 +66,17 @@ searchInput.addEventListener("input", function(){
   });
 
 
-filtered.forEach((article, index) => {
-    columns[index % 3].appendChild(createCard(article));
-});
-
-} else {
-
 if (window.innerWidth < 700) {
 
-    filtered.forEach(article => {
-        columns[0].appendChild(createCard(article));
-    });
+  filtered.forEach(article => {
+    columns[0].appendChild(createCard(article));
+  });
 
 } else {
 
-    filtered.forEach((article,index)=>{
-        columns[index % 3].appendChild(createCard(article));
-    });
-
-}
+  filtered.forEach((article,index)=>{
+    columns[index % 3].appendChild(createCard(article));
+  });
 
 }
 
@@ -156,21 +148,22 @@ function populateRandom(){
   columns.forEach(c => c.innerHTML = "");
 
   const shuffled = shuffle(articles);
-    
-if (window.innerWidth < 700) {
 
+  if (window.innerWidth < 700) {
+
+    // Mobile: one long list
     shuffled.forEach(article => {
-        columns[0].appendChild(createCard(article));
+      columns[0].appendChild(createCard(article));
     });
 
-} else {
+  } else {
 
+    // Desktop: keep existing layout
     shuffled.forEach((article,index)=>{
-        columns[index % 3].appendChild(createCard(article));
+      columns[index % 3].appendChild(createCard(article));
     });
 
-}
-
+  }
 
 }
 

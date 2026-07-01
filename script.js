@@ -157,9 +157,20 @@ function populateRandom(){
 
   const shuffled = shuffle(articles);
     
-shuffled.forEach((article, index) => {
-    columns[index % 3].appendChild(createCard(article));
-});
+if (window.innerWidth < 700) {
+
+    shuffled.forEach(article => {
+        columns[0].appendChild(createCard(article));
+    });
+
+} else {
+
+    shuffled.forEach((article,index)=>{
+        columns[index % 3].appendChild(createCard(article));
+    });
+
+}
+
 
 }
 

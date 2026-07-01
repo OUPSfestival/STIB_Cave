@@ -943,7 +943,10 @@ margin-bottom:8px;
     display:none;
   }
 
-  
+  .archive-layout.show-articles .archive-column{
+    display:block;
+    width:100%;
+}
 
   /* card tweaks */
   .article-card {

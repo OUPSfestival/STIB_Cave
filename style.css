@@ -944,9 +944,13 @@ margin-bottom:8px;
   }
 
   .archive-layout.show-articles .archive-column{
-    display:block;
-    width:100%;
-}
+      display:none;
+  }
+
+  .archive-layout.show-articles .archive-column:first-of-type{
+      display:block;
+      width:100%;
+  }
 
   /* card tweaks */
   .article-card {

@@ -196,8 +196,11 @@ function openArticle(article){
     document.getElementById("articleExcerpt").textContent =
         article.excerpt;
 
-    document.getElementById("articleBody").innerHTML =
-        article.body;
+   document.getElementById("articleBody").innerHTML =
+    article.body
+        .split(/\n\s*\n/)
+        .map(paragraph => `<p>${paragraph}</p>`)
+        .join("");
 
     document.getElementById("articleTags").innerHTML =
         (article.tags || []).map(tag =>
@@ -228,15 +231,8 @@ function openArticle(article){
     document.getElementById("articleImage").src =
         article.image;
 
-    document.getElementById("articleCredits").textContent =
-        article.credits;
-
     document.getElementById("articleImageInfo").textContent =
         article.image_info;
-    
-console.log("TITLE ELEMENT:", document.getElementById("articleTitle").innerHTML);
-console.log("VIEW CLASS:", document.getElementById("articleView").className);
-
 }
 
 

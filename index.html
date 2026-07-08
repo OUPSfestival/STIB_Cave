@@ -149,11 +149,14 @@
                     Article
                 </label>
 
-                <input
-                    id="dialogueArticle"
-                    type="text"
-                    placeholder="Article name"
-                >
+                <select id="dialogueArticle">
+
+                <option value="">
+                Select an article
+                </option>
+
+                </select>
+
 
 
                 <label>
@@ -228,6 +231,13 @@
   <!-- TEXT COLUMN -->
   <section class="article-content">
 
+ <button 
+    id="articleCommentsButton"
+    class="article-comments-button">
+    //discussion
+    </button>
+
+
  <small>
       <strong>Category:</strong>
       <span id="articleCategory"></span>
@@ -235,10 +245,13 @@
 
     <div id="articleTags"></div>
 
+
+<div id="articleDialogue"></div>
+
+
     <h2 id="articleTitle"></h2>
 
  
-
    <p>
     <span id="articleExcerpt"></span>
    <p>

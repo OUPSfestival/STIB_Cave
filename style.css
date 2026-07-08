@@ -316,8 +316,41 @@ border-bottom:1px solid var(--line);
 }
 
 
+.article-content{
+    position:relative;
+}
 
 
+.article-content{
+    position:relative;
+}
+
+
+.article-comments-button{
+
+    position:absolute;
+    top:0;
+    right:0;
+
+    border:none;
+    background:none;
+
+    color:#c9a7e8;
+
+    font-size:12px;
+
+    cursor:pointer;
+}
+
+.article-dialogue{
+
+    border:1px solid rgba(201,167,232,0.6);
+
+    padding:25px;
+
+    margin-top:40px;
+
+}
 
 /* ARTICLE VIEW */
 
@@ -524,6 +557,11 @@ filter:grayscale(0%);
     opacity:0.6;
 
 }
+
+.comment-article-title {
+    color: #b8a1d9;
+}
+
 
 
 /* PUBLIC DIALOGUE */
@@ -996,4 +1034,5 @@ margin-bottom:8px;
       overflow:visible;
   }
 }
+
 

@@ -185,7 +185,7 @@ function openArticle(article){
  .getElementById("articleView")
  .classList.remove("hidden");
 
-
+window.currentArticleId = article.id;
 
     document.getElementById("articleTitle").textContent =
         article.title;
@@ -233,7 +233,106 @@ function openArticle(article){
 
     document.getElementById("articleImageInfo").textContent =
         article.image_info;
+        
 }
+
+// PUT THIS AFTER THE FUNCTION
+
+document.addEventListener(
+"click",
+function(event){
+
+    if(
+        event.target.id === "articleCommentsButton"
+    ){
+
+        console.log(
+            "DISCUSSION CLICKED"
+        );
+
+
+        console.log(
+            "ARTICLE ID:",
+            window.currentArticleId
+        );
+
+
+        openArticleComments(
+            window.currentArticleId
+        );
+
+    }
+
+});
+
+
+
+async function openArticleComments(articleID){
+
+
+    const {data:comments,error} =
+    await supabaseClient
+    .from("comments")
+    .select("*")
+    .eq(
+        "article_id",
+        articleID
+    )
+    .order(
+        "created_at",
+        {
+            ascending:true
+        }
+    );
+
+
+    if(error){
+
+        console.error(error);
+        return;
+
+    }
+
+
+    const container =
+    document.getElementById(
+        "articleDialogue"
+    );
+
+
+    container.innerHTML = `
+
+        <h3>
+        PUBLIC DIALOGUE
+        </h3>
+
+        ${
+            comments.map(comment=>`
+
+            <div class="article-comment">
+
+                <strong>
+                    ${comment.author}
+                </strong>
+
+                <p>
+                    ${comment.content}
+                </p>
+
+                <small>
+                    ${comment.created_at}
+                </small>
+
+            </div>
+
+            `).join("")
+        }
+
+    `;
+
+
+}
+
 
 
 // 6. CLOSE ARTICLE VIEW

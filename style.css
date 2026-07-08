@@ -436,7 +436,7 @@ margin-bottom: -15px;
 }
 
 #articleBody p {
-  margin: 0 0 25px;
+  margin: 0 0 1px;
   line-height: 1.8;
 }
 
@@ -1034,5 +1034,4 @@ margin-bottom:8px;
       overflow:visible;
   }
 }
-
 

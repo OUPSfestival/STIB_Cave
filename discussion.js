@@ -1,8 +1,3 @@
-const API_URL =
-"https://cave-api.manuelbischof-phil.workers.dev";
-
-
-
 document.addEventListener(
 "DOMContentLoaded",
 ()=>{
@@ -20,7 +15,7 @@ button.addEventListener(
 async ()=>{
 
 
-const articleTitle =
+const articleId =
 document.getElementById(
 "dialogueArticle"
 ).value;
@@ -42,7 +37,7 @@ document.getElementById(
 
 
 if(
-!articleTitle ||
+!articleId ||
 !comment
 ){
 
@@ -56,31 +51,31 @@ return;
 
 
 
-await fetch(
-`${API_URL}/api/contributions`,
-{
+const {data,error} =
+await supabaseClient
+.from("comments")
+.insert({
 
-method:"POST",
+    article_id:articleId,
 
-headers:{
-"Content-Type":"application/json"
-},
+    parent_id:null,
 
-body:JSON.stringify({
+    author:name || "Anonymous",
 
-article_id: articleTitle,
+    content:comment
 
-parent_id:null,
+});
 
-author:name || "Anonymous",
 
-content:comment
+if(error){
 
-})
+console.error(error);
+
+alert("Could not publish comment");
+
+return;
 
 }
-
-);
 
 
 
@@ -106,14 +101,30 @@ document.getElementById(
 async function loadDialogue(){
 
 
-const response =
-await fetch(
-`${API_URL}/api/contributions`
+const {data:comments,error} =
+await supabaseClient
+.from("comments")
+.select(`
+    *,
+    articles (
+        title
+    )
+`)
+.order(
+    "created_at",
+    {
+        ascending:true
+    }
 );
 
 
-const comments =
-await response.json();
+if(error){
+
+console.error(error);
+
+return;
+
+}
 
 
 
@@ -155,7 +166,10 @@ list.innerHTML += `
 
 
 <strong>
-${comment.author} on ${comment.article_id}
+${comment.author} on 
+<span class="comment-article-title">
+${comment.articles.title}
+</span>
 </strong>
 
 
@@ -308,31 +322,31 @@ return;
 
 
 
-await fetch(
-`${API_URL}/api/contributions`,
-{
+const {data,error} =
+await supabaseClient
+.from("comments")
+.insert({
 
-method:"POST",
+    article_id: 1,
 
-headers:{
-"Content-Type":"application/json"
-},
+    parent_id: parentID,
 
-body:JSON.stringify({
+    author: name || "Anonymous",
 
-article_id:"",
+    content: text
 
-parent_id:parentID,
+});
 
-author:name || "Anonymous",
 
-content:text
+if(error){
 
-})
+    console.error(error);
+
+    alert("Could not publish reply");
+
+    return;
 
 }
-
-);
 
 
 
@@ -349,3 +363,46 @@ location.reload();
 
 window.openReply = openReply;
 window.sendReply = sendReply;
+
+
+
+async function loadArticles(){
+
+    const {data,error} =
+    await supabaseClient
+    .from("articles")
+    .select("id,title")
+    .order("title");
+
+
+    if(error){
+
+        console.error(error);
+        return;
+
+    }
+
+
+    const select =
+    document.getElementById(
+        "dialogueArticle"
+    );
+
+
+    data.forEach(article=>{
+
+        select.innerHTML += `
+
+        <option value="${article.id}">
+            ${article.title}
+        </option>
+
+        `;
+
+    });
+
+
+}
+
+
+loadArticles();

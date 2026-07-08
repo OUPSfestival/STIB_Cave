@@ -1,6 +1,3 @@
-
-
-
 let articles = [];
 
 let currentArticle = null;
@@ -8,6 +5,31 @@ let currentArticle = null;
 let selectedTags = [];
 
 let allTags = [];
+
+let quill = new Quill("#body", {
+    theme: "snow",
+
+    modules: {
+        toolbar: [
+            ["bold", "italic", "underline"],
+            [{ color: [] }],
+            [{ header: [1, 2, 3, false] }],
+            [{ list: "ordered" }, { list: "bullet" }],
+            ["link"]
+        ]
+    }
+});
+
+quill.clipboard.addMatcher(Node.TEXT_NODE, function(node, delta) {
+    const text = node.data;
+    if (text.includes("\n")) {
+        const lines = text.split("\n");
+        delta.ops = lines.map((line, index) => ({
+            insert: line + (index < lines.length - 1 ? "\n" : "")
+        }));
+    }
+    return delta;
+});
 
 // ------------------------------------
 // LOAD ARTICLES FROM DATABASE
@@ -137,10 +159,11 @@ function openArticle(article){
 
 
 
-    document
-    .getElementById("body")
-    .value =
-    article.body || "";
+    let content = article.body || "";
+
+content = content.replace(/\n/g, "</p><p>");
+
+quill.root.innerHTML = "<p>" + content + "</p>";
 
 
     document
@@ -290,7 +313,7 @@ async function saveArticle(){
         title: document.getElementById("title").value,
         category: document.getElementById("category").value,
         excerpt: document.getElementById("excerpt").value,
-        body: document.getElementById("body").value,
+        body: quill.root.innerHTML,
         tags: selectedTags,
         image: document.getElementById("image").value,
 
@@ -551,7 +574,7 @@ document.getElementById("category").value = "";
 
 document.getElementById("excerpt").value = "";
 
-document.getElementById("body").value = "";
+quill.setContents([]);
 
 document.getElementById("image").value = "";
 
@@ -818,3 +841,7 @@ loadEditorComments();
 document
     .querySelector(".save-button")
     .addEventListener("click", saveArticle);
+
+
+
+    

@@ -624,70 +624,145 @@ document
 
 
 
-
-
 // ==============================
-// LOAD PUBLIC DIALOGUE COMMENTS
+// LOAD EDITOR COMMENTS
 // ==============================
 
 async function loadEditorComments(){
 
-
-const response = await fetch(
-"https://cave-api.manuelbischof-phil.workers.dev/api/contributions"
-);
-
-
-const comments = await response.json();
-
-
-
-const container =
-document.getElementById(
-"editorComments"
-);
-
-
-
-container.innerHTML = "";
+    const {data:comments,error} =
+    await supabaseClient
+    .from("comments")
+    .select(`
+        *,
+        articles(
+            title
+        )
+    `)
+    .order(
+        "created_at",
+        {
+            ascending:false
+        }
+    );
 
 
-
-comments.forEach(comment=>{
-
-
-container.innerHTML += `
-
-<div class="editor-comment">
+    if(error){
+        console.error(error);
+        return;
+    }
 
 
-<strong>
-${comment.author}
-</strong>
+    // Find parent comments for replies
+
+    const parentIds =
+    comments
+    .filter(comment => comment.parent_id)
+    .map(comment => comment.parent_id);
 
 
-<p>
-${comment.content}
-</p>
+
+    let parents = [];
 
 
-<small>
-${comment.created_at}
-</small>
+    if(parentIds.length){
+
+        const {data,error} =
+        await supabaseClient
+        .from("comments")
+        .select(`
+            id,
+            author,
+            articles(
+                title
+            )
+        `)
+        .in(
+            "id",
+            parentIds
+        );
 
 
-<button onclick="deleteComment(${comment.id})">
-Delete
-</button>
+        if(error){
+            console.error(error);
+        }
 
 
-</div>
+        parents = data || [];
 
-`;
+    }
 
 
-});
 
+    const container =
+    document.getElementById(
+        "editorComments"
+    );
+
+
+
+    container.innerHTML =
+    comments.map(comment=>{
+
+
+        const parent =
+        parents.find(
+            p => p.id === comment.parent_id
+        );
+
+
+        return `
+
+        <div class="editor-comment">
+
+
+            <strong>
+                ${comment.author}
+            </strong>
+
+
+            ${
+            parent
+            ?
+            `
+            <small>
+                Replying to ${parent.author}
+                on ${parent.articles?.title || ""}
+            </small>
+            `
+            :
+            `
+            <small>
+                ${comment.articles?.title || ""}
+            </small>
+            `
+            }
+
+
+            <p>
+                ${comment.content}
+            </p>
+
+
+            <small>
+                ${comment.created_at}
+            </small>
+
+
+            <br>
+
+
+            <button onclick="deleteComment(${comment.id})">
+                Delete
+            </button>
+
+
+        </div>
+
+        `;
+
+
+    }).join("");
 
 }
 
@@ -699,38 +774,37 @@ Delete
 
 async function deleteComment(id){
 
-
-const confirmDelete =
-confirm(
-"Delete this contribution?"
-);
-
+    const confirmDelete =
+    confirm(
+        "Delete this contribution?"
+    );
 
 
-if(!confirmDelete){
-
-return;
-
-}
+    if(!confirmDelete){
+        return;
+    }
 
 
-
-await fetch(
-
-`https://cave-api.manuelbischof-phil.workers.dev/api/contributions/${id}`,
-
-{
-
-method:"DELETE"
-
-}
-
-);
+    const {error} =
+    await supabaseClient
+    .from("comments")
+    .delete()
+    .eq(
+        "id",
+        id
+    );
 
 
+    if(error){
 
-loadEditorComments();
+        console.error(error);
+        alert("Delete failed");
+        return;
 
+    }
+
+
+    loadEditorComments();
 
 }
 
@@ -740,7 +814,7 @@ loadEditorComments();
 
 loadEditorComments();
 
+
 document
     .querySelector(".save-button")
     .addEventListener("click", saveArticle);
-    

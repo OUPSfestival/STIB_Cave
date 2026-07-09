@@ -237,7 +237,6 @@ window.currentArticleId = article.id;
 }
 
 // PUT THIS AFTER THE FUNCTION
-
 document.addEventListener(
 "click",
 function(event){
@@ -249,6 +248,19 @@ function(event){
         console.log(
             "DISCUSSION CLICKED"
         );
+
+
+        const dialogue = document.getElementById("articleDialogue");
+
+
+        // close if already open
+        if(dialogue.innerHTML.trim() !== ""){
+
+            dialogue.innerHTML = "";
+
+            return;
+
+        }
 
 
         console.log(
@@ -302,9 +314,7 @@ async function openArticleComments(articleID){
 
     container.innerHTML = `
 
-        <h3>
-        PUBLIC DIALOGUE
-        </h3>
+       
 
         ${
             comments.map(comment=>`

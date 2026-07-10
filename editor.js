@@ -377,8 +377,61 @@ async function saveArticle(){
 
     loadArticles();
 
+
 }
 
+
+
+
+
+
+async function deleteArticle(){
+
+    if(!currentArticle){
+        alert("No article selected");
+        return;
+    }
+
+
+    const confirmDelete = confirm(
+        "Are you sure you want to delete this article?"
+    );
+
+
+    if(!confirmDelete){
+        return;
+    }
+
+
+    const { error } = await supabaseClient
+        .from("articles")
+        .delete()
+        .eq("id", currentArticle.id);
+
+
+    if(error){
+
+        console.error(error);
+        alert("Delete failed");
+        return;
+
+    }
+
+
+    alert("Article deleted");
+
+
+    currentArticle = null;
+
+
+    document.getElementById("title").value = "";
+    document.getElementById("excerpt").value = "";
+    quill.setContents([]);
+
+
+    await loadArticles();
+
+}
 
 
 // =========================
@@ -869,3 +922,7 @@ startEditor();
 document
     .querySelector(".save-button")
     .addEventListener("click", saveArticle);
+
+        document
+    .getElementById("delete-article")
+    .addEventListener("click", deleteArticle);

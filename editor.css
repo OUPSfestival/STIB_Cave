@@ -87,6 +87,9 @@ button {
     font-size:14px;
 
 }
+button:hover {
+    background-color: #030769;
+}
 
 
 
@@ -198,6 +201,7 @@ textarea {
 
 
 
+
 .image-preview {
 
 
@@ -248,6 +252,24 @@ footer {
 
     padding:14px 35px;
 
+}
+
+.save-button:hover {
+    background-color: #047302;
+}
+
+.delete-button {
+    background-color: #530505;
+    color: white;
+    font-size: 12px;
+    padding: 12px 25px;
+    cursor: pointer;
+    margin-top: 33px;
+    margin-left: 50px;
+}
+
+.delete-button:hover {
+    background-color: #b30000;
 }
 
 .layout{

@@ -7,20 +7,3 @@ const supabaseClient = supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
-
-
-async function testSupabase(){
-
-const {data,error}=await supabaseClient
-.from("articles")
-.select("*");
-
-
-console.log("DATA:",data);
-
-console.log("ERROR:",error);
-
-}
-
-
-testSupabase();

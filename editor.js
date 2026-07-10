@@ -1,3 +1,22 @@
+
+async function checkLogin(){
+
+    const { data } = await supabaseClient.auth.getSession();
+
+    if (!data.session) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    console.log("Logged in:", data.session.user.email);
+
+}
+
+checkLogin();
+
+
+
+
 let articles = [];
 
 let currentArticle = null;

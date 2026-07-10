@@ -5,14 +5,13 @@ async function checkLogin(){
 
     if (!data.session) {
         window.location.href = "login.html";
-        return;
+        return false;
     }
 
     console.log("Logged in:", data.session.user.email);
 
+    return true;
 }
-
-checkLogin();
 
 
 
@@ -620,11 +619,7 @@ document.getElementById("title").focus();
 
 });
 
-// START
 
-
-
-loadArticles();
 
 
 // =========================
@@ -852,15 +847,25 @@ async function deleteComment(id){
 
 
 
-// start
+// START EDITOR
 
-loadEditorComments();
+async function startEditor(){
+
+    const loggedIn = await checkLogin();
+
+    if (!loggedIn) return;
+
+
+    await loadArticles();
+
+    await loadEditorComments();
+
+}
+
+
+startEditor();
 
 
 document
     .querySelector(".save-button")
     .addEventListener("click", saveArticle);
-
-
-
-    

@@ -802,6 +802,8 @@ margin-bottom:8px;
     margin-bottom: 25px;
 }
 
+
+
 #articleDialogue small {
     font-size: 9px;
 }
@@ -1045,23 +1047,25 @@ margin-bottom:8px;
      ARTICLE VIEW (MOBILE)
   ========================= */
 
-.article-view {
-  position: static;
-  display: block;
-  height: auto;
-  max-height: none;
-  overflow: visible;
-}
-
+  .article-view {
+    position: static;
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+  }
 
   .article-image-panel {
     height: auto;
-  
   }
 
-  .article-content {
-    padding: 20px;
-  }
+ .article-content {
+  padding: 20px;
+  max-height: none;
+  overflow: visible;
+}
 
   .article-content h2 {
     font-size: 28px;

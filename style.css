@@ -1047,32 +1047,35 @@ margin-bottom:8px;
      ARTICLE VIEW (MOBILE)
   ========================= */
 
-  .article-view {
+    .article-view {
     position: static;
     display: block;
     width: 100%;
+    max-width: 100%;
     height: auto;
     min-height: 0;
     max-height: none;
     overflow: visible;
-  }
+    overflow-x: hidden;
 
-  .article-image-panel {
+    }
+
+    .article-image-panel {
     height: auto;
-  }
+    }
 
- .article-content {
-  padding: 20px;
-  max-height: none;
-  overflow: visible;
-}
+    .article-content {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    }
 
-  .article-content h2 {
+    .article-content h2 {
     font-size: 28px;
-  }
-  .archive-column{
-      height:auto;
-      overflow:visible;
-  }
+    }
+    .archive-column{
+    height:auto;
+    overflow:visible;
+    }
 }
 

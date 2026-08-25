@@ -168,6 +168,25 @@ function populateRandom(){
 }
 
 
+function setOptionalField(value, fieldId, rowId) {
+
+    const field = document.getElementById(fieldId);
+    const row = document.getElementById(rowId);
+
+    if (!value || value.toString().trim() === "") {
+
+        // No information → hide the entire row
+        row.style.display = "none";
+
+    } else {
+
+        // Information exists → show the row
+        row.style.display = "";
+
+        field.textContent = value;
+    }
+}
+
 
 
 // 5. OPEN ARTICLE  <-- paste here
@@ -207,26 +226,53 @@ window.currentArticleId = article.id;
             `<span class="article-tag">${tag}</span>`
         ).join(" ");
 
-    document.getElementById("articlePublishingDate").textContent =
-        article.publishing_date;
 
-    document.getElementById("articlePublishingLocation").textContent =
-        article.publishing_location;
 
-    document.getElementById("articlePublisher").textContent =
-        article.publisher;
+setOptionalField(
+    article.publishing_date,
+    "articlePublishingDate",
+    "articlePublishingDateRow"
+);
 
-    document.getElementById("articleInfos").textContent =
-        article.infos;
+setOptionalField(
+    article.publishing_location,
+    "articlePublishingLocation",
+    "articlePublishingLocationRow"
+);
 
-    document.getElementById("articleObjectMaterial").textContent =
-        article.object_material;
+setOptionalField(
+    article.publisher,
+    "articlePublisher",
+    "articlePublisherRow"
+);
 
-    document.getElementById("articleObjectTechnique").textContent =
-        article.object_technique;
+setOptionalField(
+    article.infos,
+    "articleInfos",
+    "articleInfosRow"
+);
 
-    document.getElementById("articleSources").textContent =
-        article.sources;
+setOptionalField(
+    article.object_material,
+    "articleObjectMaterial",
+    "articleObjectMaterialRow"
+);
+
+setOptionalField(
+    article.object_technique,
+    "articleObjectTechnique",
+    "articleObjectTechniqueRow"
+);
+
+setOptionalField(
+    article.sources,
+    "articleSources",
+    "articleSourcesRow"
+);
+
+
+
+
 
     document.getElementById("articleImage").src =
         article.image;

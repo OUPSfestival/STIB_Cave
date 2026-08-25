@@ -937,7 +937,7 @@ margin-bottom:8px;
     display: block;
     height: auto;
     min-height: 100vh;
-    padding-top: 50px; /* space for mobile nav */
+    padding-top: 90px; /* space for mobile nav */
   }
 
   /* -------------------------
@@ -1045,14 +1045,18 @@ margin-bottom:8px;
      ARTICLE VIEW (MOBILE)
   ========================= */
 
-  .article-view {
-    display: block;
-    grid-template-columns: 1fr;
-    overflow-y: auto;
-  }
+.article-view {
+  position: static;
+  display: block;
+  height: auto;
+  max-height: none;
+  overflow: visible;
+}
+
 
   .article-image-panel {
     height: auto;
+  
   }
 
   .article-content {

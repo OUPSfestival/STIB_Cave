@@ -898,6 +898,32 @@ async function deleteComment(id){
 
 }
 
+// ------------------------------------
+// HIDE INFO
+// ------------------------------------
+
+document.getElementById("toggle-info").addEventListener("click", function(){
+
+    const publishing = document.getElementById("publishing-section");
+    const extra = document.getElementById("extra-info-section");
+
+    if (publishing.style.display === "none") {
+
+        publishing.style.display = "";
+        extra.style.display = "";
+
+        this.textContent = "HIDE INFO";
+
+    } else {
+
+        publishing.style.display = "none";
+        extra.style.display = "none";
+
+        this.textContent = "SHOW INFO";
+
+    }
+
+});
 
 
 // START EDITOR
